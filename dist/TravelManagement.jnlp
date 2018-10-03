@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="TravelManagement.jnlp">
+  <information>
+    <title>TravelManagement</title>
+    <vendor>dms</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="TravelManagement.jar" size="960424" download="eager" />
+    <jar href="lib\jfoenix.jar" size="2631271" download="eager" />
+    <jar href="lib\sqlite-jdbc.jar" size="6733696" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="TravelManagement" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="travelmanagement.TravelManagement"  name="TravelManagement" />
+  <update check="always"/>
+</jnlp>

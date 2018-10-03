@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.AboutPage.AboutPageContentController">
+   <children>
+      <JFXTabPane fx:id="mainAccountsTab" prefHeight="590.0" prefWidth="1200.0">
+         <tabs>
+            <Tab fx:id="CreateAccountTab" style="-fx-background-color: red;" text="Create Account">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXTextArea fx:id="caAcc_desc" labelFloat="true" layoutX="476.0" layoutY="300.0" prefHeight="90.0" prefWidth="250.0" promptText="Account Description" />
+                        <JFXComboBox fx:id="caAcc_type" focusColor="#5d1beb" layoutX="513.0" layoutY="182.0" prefHeight="29.0" prefWidth="175.0" promptText="Account Type" />
+                        <JFXTextField id="acc_no_c" fx:id="caAcc_no" focusColor="#d30699" labelFloat="true" layoutX="484.0" layoutY="143.0" prefHeight="25.0" prefWidth="216.0" promptText="Account Number" />
+                        <JFXButton id="login_btn_c" fx:id="Llogin_btn" buttonType="RAISED" layoutX="528.0" layoutY="459.0" onAction="#CreateAccount" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Create Account" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <Label fx:id="iscaAcc_type" layoutX="514.0" layoutY="240.0" prefHeight="24.0" prefWidth="174.0" textFill="RED" />
+                        <JFXTextField fx:id="caAccAmount" labelFloat="true" layoutX="544.0" layoutY="240.0" promptText="Enter Starting Amount" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>

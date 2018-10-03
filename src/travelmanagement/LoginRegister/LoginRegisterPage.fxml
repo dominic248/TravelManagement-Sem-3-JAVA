@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1060.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.LoginRegister.LoginRegisterController">
+   <children>
+      <JFXTabPane fx:id="TypeTab">
+         <tabs>
+            <Tab fx:id="UserTab" style="-fx-background-color: red;" text="User">
+              <content>
+                <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXTabPane fx:id="UserLoginRegisterTab" prefHeight="674.0" prefWidth="1060.0">
+                           <tabs>
+                              <Tab fx:id="UserLoginTab" style="-fx-background-color: red;" text="User Login">
+                                <content>
+                                  <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane layoutX="57.0" layoutY="35.0">
+                                             <children>
+                                                <Pane layoutX="9.0" layoutY="9.0" prefHeight="536.0" prefWidth="928.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
+                                                   <children>
+                                                      <Label layoutX="424.0" layoutY="82.0" text="Sign in" textAlignment="CENTER" textFill="#003fff">
+                                                         <font>
+                                                            <Font name="Microsoft JhengHei UI Light" size="26.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label id="welcome" layoutX="408.0" layoutY="123.0" prefHeight="50.0" prefWidth="114.0" text="Welcome, to Travel Mangement System" textAlignment="CENTER" textFill="#868686" wrapText="true" />
+                                                      <JFXTextField id="acc_no_c" fx:id="Lusername" focusColor="#d30699" labelFloat="true" layoutX="357.0" layoutY="191.0" prefHeight="25.0" prefWidth="216.0" promptText="Username" />
+                                                      <JFXPasswordField id="pass_c" fx:id="Lpassword" focusColor="#d30699" labelFloat="true" layoutX="357.0" layoutY="247.0" prefHeight="25.0" prefWidth="216.0" promptText="Password" />
+                                                      <JFXButton id="login_btn_c" fx:id="Llogin_btn" buttonType="RAISED" layoutX="402.0" layoutY="344.0" onAction="#Login" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXButton>
+                                                      <Label layoutX="416.0" layoutY="294.0" prefHeight="25.0" prefWidth="98.0" text="Forgot Password?" textAlignment="CENTER" textFill="#464646" wrapText="true" />
+                                                      <Label fx:id="LisConnected" layoutX="279.0" layoutY="398.0" prefHeight="25.0" prefWidth="370.0" text="Status" textFill="RED" />
+                                                      <Label fx:id="Lisusername" layoutX="357.0" layoutY="216.0" prefHeight="17.0" prefWidth="216.0" textFill="RED" />
+                                                      <Label fx:id="Lispassword" layoutX="356.0" layoutY="272.0" prefHeight="17.0" prefWidth="217.0" textFill="RED" />
+                                                   </children>
+                                                   <effect>
+                                                      <DropShadow color="#3c3c3c" />
+                                                   </effect>
+                                                </Pane>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab fx:id="UserRegisterTab" style="-fx-background-color: red;" text="User Registeration">
+                                 <content>
+                                    <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Pane layoutX="26.0" layoutY="38.0" prefHeight="561.0" prefWidth="1009.0" style="-fx-background-color: #d2d2d2;">
+                                             <children>
+                                                <JFXTextField fx:id="Rusername" labelFloat="true" layoutX="417.0" layoutY="149.0" prefHeight="25.0" prefWidth="166.0" promptText="Username" />
+                                                <JFXPasswordField fx:id="Rpassword" labelFloat="true" layoutX="417.0" layoutY="208.0" prefHeight="25.0" prefWidth="166.0" promptText="Password" />
+                                                <JFXTextField fx:id="Remail" labelFloat="true" layoutX="417.0" layoutY="324.0" prefHeight="25.0" prefWidth="166.0" promptText="E-mail ID" />
+                                                <JFXTextField fx:id="Rmobile" labelFloat="true" layoutX="417.0" layoutY="268.0" prefHeight="25.0" prefWidth="166.0" promptText="Mobile No." />
+                                                <Label fx:id="RisConnected" layoutX="347.0" layoutY="479.0" prefHeight="17.0" prefWidth="314.0" text="Connected" />
+                                                <JFXButton fx:id="Rregister_btn" buttonType="RAISED" layoutX="450.0" layoutY="404.0" onAction="#Register" prefHeight="45.0" prefWidth="101.0" style="-fx-background-color: #c51162; -fx-background-radius: 50; -fx-border-radius: 50;" text="Register" textFill="WHITE" />
+                                                <Label fx:id="RisUsername" layoutX="417.0" layoutY="174.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
+                                                <Label fx:id="RisPassword" layoutX="417.0" layoutY="233.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
+                                                <Label fx:id="RisEmail" layoutX="417.0" layoutY="349.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
+                                                <Label fx:id="RisMobile" layoutX="417.0" layoutY="293.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
+                                                <JFXTextField fx:id="Rname" labelFloat="true" layoutX="417.0" layoutY="91.0" prefHeight="25.0" prefWidth="174.0" promptText="Name" />
+                                                <Label fx:id="RisName" layoutX="417.0" layoutY="116.0" prefHeight="17.0" prefWidth="174.0" textFill="RED" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs></JFXTabPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="AdminTab" style="-fx-background-color: red;" text="Admin">
+              <content>
+                <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXTabPane fx:id="AdminLogin" prefHeight="675.0" prefWidth="1060.0">
+                           <tabs>
+                              <Tab style="-fx-background-color: red;" text="Admin Login">
+                                <content>
+                                  <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Pane layoutX="121.0" layoutY="58.0" prefHeight="492.0" prefWidth="818.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
+                                             <children>
+                                                <Label layoutX="367.0" layoutY="72.0" text="Sign in" textAlignment="CENTER" textFill="#003fff">
+                                                   <font>
+                                                      <Font name="Microsoft JhengHei UI Light" size="26.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="welcome" layoutX="351.0" layoutY="113.0" prefHeight="50.0" prefWidth="114.0" text="Welcome, to Travel Mangement System" textAlignment="CENTER" textFill="#868686" wrapText="true" />
+                                                <JFXTextField id="acc_no_c" fx:id="Ausername" focusColor="#d30699" labelFloat="true" layoutX="300.0" layoutY="181.0" prefHeight="25.0" prefWidth="216.0" promptText="Username" />
+                                                <JFXPasswordField id="pass_c" fx:id="Apassword" focusColor="#d30699" labelFloat="true" layoutX="300.0" layoutY="237.0" prefHeight="25.0" prefWidth="216.0" promptText="Password" />
+                                                <JFXButton id="login_btn_c" fx:id="Alogin_btn" buttonType="RAISED" layoutX="345.0" layoutY="334.0" onAction="#AdminLogin" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </JFXButton>
+                                                <Label layoutX="359.0" layoutY="284.0" prefHeight="25.0" prefWidth="98.0" text="Forgot Password?" textAlignment="CENTER" textFill="#464646" wrapText="true" />
+                                                <Label fx:id="LisConnected1" layoutX="222.0" layoutY="388.0" prefHeight="25.0" prefWidth="370.0" text="Status" textFill="RED" />
+                                                <Label fx:id="Aisusername" layoutX="300.0" layoutY="206.0" prefHeight="17.0" prefWidth="216.0" textFill="RED" />
+                                                <Label fx:id="Aispassword" layoutX="299.0" layoutY="262.0" prefHeight="17.0" prefWidth="217.0" textFill="RED" />
+                                             </children>
+                                             <effect>
+                                                <DropShadow color="#3c3c3c" />
+                                             </effect>
+                                          </Pane>
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                           </tabs></JFXTabPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</StackPane>

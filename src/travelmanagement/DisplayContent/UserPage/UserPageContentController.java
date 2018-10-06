@@ -208,7 +208,7 @@ public class UserPageContentController implements Initializable {
     //START prep transaction table
     public void getTransData() {
 
-        String query = "select place,stayFee,booked.foodFee,travelFee,travelMode,travelDate,paid from package,booked where userId=" + userId + ";\n";
+        String query = "select package.packId,booked.packId,userId,place,stayFee,booked.foodFee,travelFee,travelMode,travelDate,paid from package, booked where package.packId=booked.packId and userId=" + userId + ";\n";
         System.out.println(query);
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -332,8 +332,10 @@ public class UserPageContentController implements Initializable {
 
         PackageInfoTable.setRoot(root);
         PackageInfoTable.setShowRoot(false);
-
         //END for view packages.....................................................
+        
+        
+        
         //START for view transactions.....................................................
         ViewBuyedTab.setOnSelectionChanged(new EventHandler<Event>() {
             @Override
@@ -350,7 +352,7 @@ public class UserPageContentController implements Initializable {
                         return param.getValue().getValue().place;
                     }
                 });
-                JFXTreeTableColumn<TransInfo, String> tStayAm = new JFXTreeTableColumn<>("No. of Adults");
+                JFXTreeTableColumn<TransInfo, String> tStayAm = new JFXTreeTableColumn<>("Stay Cost");
                 tStayAm.setPrefWidth(80);
                 tStayAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
                     @Override
@@ -358,7 +360,7 @@ public class UserPageContentController implements Initializable {
                         return param.getValue().getValue().stayFee;
                     }
                 });
-                JFXTreeTableColumn<TransInfo, String> tFoodAm = new JFXTreeTableColumn<>("No. of Kids");
+                JFXTreeTableColumn<TransInfo, String> tFoodAm = new JFXTreeTableColumn<>("Food Cost");
                 tFoodAm.setPrefWidth(80);
                 tFoodAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
                     @Override
@@ -366,7 +368,7 @@ public class UserPageContentController implements Initializable {
                         return param.getValue().getValue().foodFee;
                     }
                 });
-                JFXTreeTableColumn<TransInfo, String> tTravelAm = new JFXTreeTableColumn<>("Stay Cost");
+                JFXTreeTableColumn<TransInfo, String> tTravelAm = new JFXTreeTableColumn<>("Travel Cost");
                 tTravelAm.setPrefWidth(80);
                 tTravelAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
                     @Override
@@ -374,7 +376,7 @@ public class UserPageContentController implements Initializable {
                         return param.getValue().getValue().travelFee;
                     }
                 });
-                JFXTreeTableColumn<TransInfo, String> tTotalAm = new JFXTreeTableColumn<>("Food Cost");
+                JFXTreeTableColumn<TransInfo, String> tTotalAm = new JFXTreeTableColumn<>("Total Cost");
                 tTotalAm.setPrefWidth(80);
                 tTotalAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
                     @Override
@@ -382,7 +384,7 @@ public class UserPageContentController implements Initializable {
                         return param.getValue().getValue().total;
                     }
                 });
-                JFXTreeTableColumn<TransInfo, String> tTravelMode = new JFXTreeTableColumn<>("Bus Cost");
+                JFXTreeTableColumn<TransInfo, String> tTravelMode = new JFXTreeTableColumn<>("Travel Mode");
                 tTravelMode.setPrefWidth(80);
                 tTravelMode.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
                     @Override
@@ -390,7 +392,7 @@ public class UserPageContentController implements Initializable {
                         return param.getValue().getValue().travelMode;
                     }
                 });
-                JFXTreeTableColumn<TransInfo, String> tTravelDate = new JFXTreeTableColumn<>("Train Cost");
+                JFXTreeTableColumn<TransInfo, String> tTravelDate = new JFXTreeTableColumn<>("Travel Date");
                 tTravelDate.setPrefWidth(80);
                 tTravelDate.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
                     @Override
@@ -398,7 +400,7 @@ public class UserPageContentController implements Initializable {
                         return param.getValue().getValue().travelDate;
                     }
                 });
-                JFXTreeTableColumn<TransInfo, String> tPaid = new JFXTreeTableColumn<>("Flight Cost");
+                JFXTreeTableColumn<TransInfo, String> tPaid = new JFXTreeTableColumn<>("Paid");
                 tPaid.setPrefWidth(90);
                 tPaid.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
                     @Override
@@ -411,10 +413,10 @@ public class UserPageContentController implements Initializable {
                 TransInfoTable.getColumns().setAll(tPlace, tStayAm, tFoodAm, tTravelAm, tTotalAm, tTravelMode, tTravelDate, tPaid);
 
                 TransInfoTable.setRoot(root);
-                TransInfoTable.setShowRoot(false);
-                //END for view transactions.....................................................
+                TransInfoTable.setShowRoot(false);             
             }
         });
+        //END for view transactions.....................................................
 
         //START get place name of select row from tree table
         PackageInfoTable.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {

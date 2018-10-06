@@ -47,6 +47,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import travelmanagement.DisplayContent.Other.BookingInfo;
 import travelmanagement.database.SqliteConnection;
 import travelmanagement.DisplayContent.Other.PackageInfo;
 import travelmanagement.DisplayContent.Other.UserInfo;
@@ -189,6 +190,9 @@ public class AdminPageContentController implements Initializable {
     
     @FXML
     private JFXTreeTableView<UserInfo> UserInfoTable;
+    
+    @FXML
+    private JFXTreeTableView<BookingInfo> BookingInfoTable;
 
     @FXML
     private JFXTextField addFoodAm;
@@ -202,6 +206,7 @@ public class AdminPageContentController implements Initializable {
     
     static ObservableList<PackageInfo> packagedata = FXCollections.observableArrayList();
     static ObservableList<UserInfo> userdata = FXCollections.observableArrayList();
+    static ObservableList<BookingInfo> bookingdata = FXCollections.observableArrayList();
     Stage stage;
     FileChooser fileChoose;    
     private Image image;
@@ -282,8 +287,8 @@ public class AdminPageContentController implements Initializable {
                         Integer.toString(resultSet.getInt("busFee")),
                         Integer.toString(resultSet.getInt("trainFee")),
                         Integer.toString(resultSet.getInt("airlinesFee")),
-                        Integer.toString(resultSet.getInt("noDays")) + "day and " + Integer.toString(resultSet.getInt("noNights")) + "night"
-                ));
+                        Integer.toString(resultSet.getInt("noDays")) + "day and " + Integer.toString(resultSet.getInt("noNights")) + "night")
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -298,6 +303,42 @@ public class AdminPageContentController implements Initializable {
     }
     //END add packages data to TreeTable in view packages
     
+    
+    //START add packages data to TreeTable in view booking
+    public void getBookingData() {
+        
+        String query = "select package.packId,booked.packId,userId,place,stayFee,booked.foodFee,travelFee,travelMode,travelDate,paid from package, booked where package.packId=booked.packId;\n";
+        System.out.println(query);
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                
+                bookingdata.add(new BookingInfo(Integer.toString(resultSet.getInt("packId")),
+                        Integer.toString(resultSet.getInt("userId")),
+                        resultSet.getString("place"),
+                        Integer.toString(resultSet.getInt("stayFee")),
+                        Integer.toString(resultSet.getInt("foodFee")),
+                        Integer.toString(resultSet.getInt("travelFee")),
+                        
+                        Integer.toString(resultSet.getInt("stayFee")+resultSet.getInt("foodFee")+resultSet.getInt("travelFee")),
+                        resultSet.getString("travelMode"),
+                        resultSet.getString("travelDate"),
+                        resultSet.getString("paid"))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+                resultSet.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminPageContentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    //END add packages data to TreeTable in view booking
     
     
     //START add user data to TreeTable in view users
@@ -517,6 +558,111 @@ public class AdminPageContentController implements Initializable {
             setPackageToLabel(stpackage);
         });
         //END get place name of select row from tree table
+        
+        
+        //START for view booking.....................................................
+        ViewBookingTab.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+                System.out.println("Set View");
+                BookingInfoTable.setRoot(null);
+                bookingdata.clear();
+                bookingdata.removeAll(bookingdata);
+                JFXTreeTableColumn<BookingInfo, String> bPackId = new JFXTreeTableColumn<>("Package ID");
+                bPackId.setPrefWidth(130);
+                bPackId.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().packId;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bUserId = new JFXTreeTableColumn<>("User ID");
+                bUserId.setPrefWidth(80);
+                bUserId.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().userId;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bPlace = new JFXTreeTableColumn<>("Place");
+                bPlace.setPrefWidth(80);
+                bPlace.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().place;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bStayAm = new JFXTreeTableColumn<>("Stay Cost");
+                bStayAm.setPrefWidth(80);
+                bStayAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().stayFee;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bFoodAm = new JFXTreeTableColumn<>("Food Cost");
+                bFoodAm.setPrefWidth(80);
+                bFoodAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().foodFee;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bTravelAm = new JFXTreeTableColumn<>("Travel Cost");
+                bTravelAm.setPrefWidth(80);
+                bTravelAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().travelFee;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bTotal = new JFXTreeTableColumn<>("Total Cost");
+                bTotal.setPrefWidth(80);
+                bTotal.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().total;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bTravelMode = new JFXTreeTableColumn<>("Travel Mode");
+                bTravelMode.setPrefWidth(80);
+                bTravelMode.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().travelMode;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bTravelDate = new JFXTreeTableColumn<>("Travelling Date");
+                bTravelDate.setPrefWidth(90);
+                bTravelDate.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().travelDate;
+                    }
+                });
+                JFXTreeTableColumn<BookingInfo, String> bPaid = new JFXTreeTableColumn<>("Paid");
+                bPaid.setPrefWidth(110);
+                bPaid.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<BookingInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<BookingInfo, String> param) {
+                        return param.getValue().getValue().paid;
+                    }
+                });
+                
+                getBookingData();
+                final TreeItem<BookingInfo> root = new RecursiveTreeItem<BookingInfo>(bookingdata, RecursiveTreeObject::getChildren);
+                BookingInfoTable.getColumns().setAll(bPackId, bUserId, bPlace, bStayAm, bFoodAm, bTravelAm, bTotal, bTravelMode, bTravelDate, bPaid);
+                
+                BookingInfoTable.setRoot(root);
+                BookingInfoTable.setShowRoot(false);
+            }
+        });
+        //END for view booking.....................................................
+        
+        
+        
+        
+        
         
         //START for view Users.....................................................
         ViewUserTab.setOnSelectionChanged(new EventHandler<Event>() {

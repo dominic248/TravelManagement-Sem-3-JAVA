@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.AdminPage.AdminPageContentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.AdminPage.AdminPageContentController">
     <children>
       <JFXTabPane fx:id="mainAdminTab" prefHeight="590.0" prefWidth="1200.0">
          <tabs>
@@ -84,7 +89,14 @@
             </Tab>
             <Tab fx:id="ViewBookingTab" style="-fx-background-color: red;" text="View Booking Details">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <FlowPane prefHeight="555.0" prefWidth="1200.0">
+                           <children>
+                              <JFXTreeTableView fx:id="BookingInfoTable" prefHeight="555.0" prefWidth="1200.0" />
+                           </children>
+                        </FlowPane>
+                     </children></AnchorPane>
                </content>
             </Tab>
             <Tab fx:id="ViewUserTab" style="-fx-background-color: red;" text="View User Details">

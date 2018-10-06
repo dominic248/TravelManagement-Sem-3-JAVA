@@ -41,8 +41,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import travelmanagement.DisplayContent.Other.BookingInfo;
 
 import travelmanagement.DisplayContent.Other.PackageInfo;
+import travelmanagement.DisplayContent.Other.TransInfo;
+import travelmanagement.LoginRegister.LoginModel;
 import travelmanagement.database.SqliteConnection;
 
 /**
@@ -61,6 +64,7 @@ public class UserPageContentController implements Initializable {
             System.exit(1);
         }
     }
+    public static int userId = LoginModel.userId;
 
     @FXML
     private Label dFood;
@@ -82,7 +86,7 @@ public class UserPageContentController implements Initializable {
 
     @FXML
     private Tab ViewPlacesTab;
-    
+
     @FXML
     private AnchorPane ViewPlaces;
 
@@ -105,16 +109,20 @@ public class UserPageContentController implements Initializable {
     private JFXTreeTableView<PackageInfo> PackageInfoTable;
 
     @FXML
+    private JFXTreeTableView<TransInfo> TransInfoTable;
+
+    @FXML
     private Label dPlace;
 
     @FXML
     private Label dTrain;
-    
+
     @FXML
     private JFXButton dBook;
 
     static ObservableList<PackageInfo> packagedata = FXCollections.observableArrayList();
-    
+    static ObservableList<TransInfo> transdata = FXCollections.observableArrayList();
+
     public static int booking;
 
     //START add packages data to TreeTable in view packages
@@ -170,8 +178,8 @@ public class UserPageContentController implements Initializable {
                 InputStream input = new ByteArrayInputStream(resultSet.getBytes("pImage"));
                 Image imge = new Image(input);
                 dImage.setImage(imge);
-                booking=resultSet.getInt("packId");
-                System.out.println("booking"+booking);
+                booking = resultSet.getInt("packId");
+                System.out.println("booking" + booking);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -186,30 +194,51 @@ public class UserPageContentController implements Initializable {
     }
     //END load data of selected packages from TreeTable to view label in view packages
 
-    
-    
-    public void Book(){
+    public void Book() {
         ViewPlaces.getChildren().clear();
-        try {                                  
+        try {
             ViewPlaces.getChildren().add(FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/UserPage/PackageBookingContent.fxml")));
             System.out.println("loaded");
         } catch (IOException ex) {
             Logger.getLogger(UserPageContentController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                                    
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    //START prep transaction table
+    public void getTransData() {
+
+        String query = "select place,stayFee,booked.foodFee,travelFee,travelMode,travelDate,paid from package,booked where userId=" + userId + ";\n";
+        System.out.println(query);
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+
+                transdata.add(new TransInfo(
+                        resultSet.getString("place"),
+                        Integer.toString(resultSet.getInt("stayFee")),
+                        Integer.toString(resultSet.getInt("foodFee")),
+                        Integer.toString(resultSet.getInt("travelFee")),
+                        Integer.toString(resultSet.getInt("stayFee") + resultSet.getInt("foodFee") + resultSet.getInt("travelFee")),
+                        resultSet.getString("travelMode"),
+                        resultSet.getString("travelDate"),
+                        resultSet.getString("paid"))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+                resultSet.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UserPageContentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    //END prep transaction table
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainUserTab.widthProperty().addListener((observable, oldValue, newValue)
@@ -305,6 +334,88 @@ public class UserPageContentController implements Initializable {
         PackageInfoTable.setShowRoot(false);
 
         //END for view packages.....................................................
+        //START for view transactions.....................................................
+        ViewBuyedTab.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+                System.out.println("Set View");
+                TransInfoTable.setRoot(null);
+                transdata.clear();
+                transdata.removeAll(transdata);
+                JFXTreeTableColumn<TransInfo, String> tPlace = new JFXTreeTableColumn<>("Place");
+                tPlace.setPrefWidth(130);
+                tPlace.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().place;
+                    }
+                });
+                JFXTreeTableColumn<TransInfo, String> tStayAm = new JFXTreeTableColumn<>("No. of Adults");
+                tStayAm.setPrefWidth(80);
+                tStayAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().stayFee;
+                    }
+                });
+                JFXTreeTableColumn<TransInfo, String> tFoodAm = new JFXTreeTableColumn<>("No. of Kids");
+                tFoodAm.setPrefWidth(80);
+                tFoodAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().foodFee;
+                    }
+                });
+                JFXTreeTableColumn<TransInfo, String> tTravelAm = new JFXTreeTableColumn<>("Stay Cost");
+                tTravelAm.setPrefWidth(80);
+                tTravelAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().travelFee;
+                    }
+                });
+                JFXTreeTableColumn<TransInfo, String> tTotalAm = new JFXTreeTableColumn<>("Food Cost");
+                tTotalAm.setPrefWidth(80);
+                tTotalAm.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().total;
+                    }
+                });
+                JFXTreeTableColumn<TransInfo, String> tTravelMode = new JFXTreeTableColumn<>("Bus Cost");
+                tTravelMode.setPrefWidth(80);
+                tTravelMode.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().travelMode;
+                    }
+                });
+                JFXTreeTableColumn<TransInfo, String> tTravelDate = new JFXTreeTableColumn<>("Train Cost");
+                tTravelDate.setPrefWidth(80);
+                tTravelDate.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().travelDate;
+                    }
+                });
+                JFXTreeTableColumn<TransInfo, String> tPaid = new JFXTreeTableColumn<>("Flight Cost");
+                tPaid.setPrefWidth(90);
+                tPaid.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TransInfo, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TransInfo, String> param) {
+                        return param.getValue().getValue().paid;
+                    }
+                });
+                getTransData();
+                final TreeItem<TransInfo> root = new RecursiveTreeItem<TransInfo>(transdata, RecursiveTreeObject::getChildren);
+                TransInfoTable.getColumns().setAll(tPlace, tStayAm, tFoodAm, tTravelAm, tTotalAm, tTravelMode, tTravelDate, tPaid);
+
+                TransInfoTable.setRoot(root);
+                TransInfoTable.setShowRoot(false);
+                //END for view transactions.....................................................
+            }
+        });
+
         //START get place name of select row from tree table
         PackageInfoTable.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
             TreeItem<PackageInfo> selectedItem = PackageInfoTable.getSelectionModel().getSelectedItem();

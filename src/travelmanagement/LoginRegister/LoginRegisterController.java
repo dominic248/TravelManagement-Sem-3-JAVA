@@ -216,7 +216,7 @@ public class LoginRegisterController implements Initializable {
                 || registerModel.ifUsernameExists(Rusername.getText())) {
             return;
         } else {
-            if (registerModel.isRegister(Rname.getText(),Rusername.getText(), Rpassword.getText(),Integer.parseInt(Rmobile.getText()),Remail.getText())) {
+            if (registerModel.isRegister(Rname.getText(),Rusername.getText(), Rpassword.getText(),Integer.valueOf(Rmobile.getText()),Remail.getText())) {
                 System.out.println("Done");
                 UserLoginRegisterTab.getSelectionModel().select(0);
             }

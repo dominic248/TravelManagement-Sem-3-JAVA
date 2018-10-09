@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/Other/PackageInfo.java</file>
-            <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/Other/TransInfo.java</file>
-            <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/Other/BookingInfo.java</file>
+            <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/DisplayModel.java</file>
             <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/AdminPage/AdminPageContentController.java</file>
             <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/UserPage/PackageBookingContentController.java</file>
+            <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/LoginRegister/LoginRegisterController.java</file>
+            <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/DisplayController.java</file>
+            <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/TravelManagement.java</file>
             <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/LoginRegister/LoginModel.java</file>
             <file>file:/E:/Projects/JAVA/JavaFX/TravelManagement/src/travelmanagement/DisplayContent/UserPage/UserPageContentController.java</file>
         </group>

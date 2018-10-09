@@ -21,7 +21,7 @@ import javafx.stage.StageStyle; //StageStyle.DECORATED
 
 public class TravelManagement extends Application {
 
-    Stage stage;
+    public static Stage stage;
     Connection connection;
 
     @Override

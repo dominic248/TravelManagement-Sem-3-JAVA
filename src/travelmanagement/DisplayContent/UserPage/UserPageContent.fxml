@@ -10,19 +10,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.UserPage.UserPageContentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.UserPage.UserPageContentController">
     <children>
-      <JFXTabPane fx:id="mainUserTab" prefHeight="590.0" prefWidth="1200.0">
+      <JFXTabPane fx:id="mainUserTab" prefHeight="590.0" prefWidth="1150.0">
          <tabs>
             <Tab fx:id="ViewPlacesTab" style="-fx-background-color: red;" text="View places">
                <content>
                   <AnchorPane fx:id="ViewPlaces" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="dImage" fitHeight="228.0" fitWidth="365.0" layoutX="825.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="dImage" fitHeight="224.0" fitWidth="365.0" layoutX="771.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <effect>
                               <DropShadow />
                            </effect></ImageView>
-                        <AnchorPane layoutX="825.0" layoutY="247.0" prefHeight="298.0" prefWidth="365.0" style="-fx-background-color: white;">
+                        <AnchorPane layoutX="771.0" layoutY="248.0" prefHeight="292.0" prefWidth="365.0" style="-fx-background-color: white;">
                            <children>
                               <Label layoutX="14.0" layoutY="13.0" text="Place:" />
                               <Label fx:id="dPlace" layoutX="88.0" layoutY="13.0" prefHeight="17.0" prefWidth="256.0" />
@@ -44,15 +44,15 @@
                               <Label fx:id="dAir" layoutX="314.0" layoutY="172.0" prefHeight="17.0" prefWidth="50.0" />
                               <Label layoutX="14.0" layoutY="204.0" text="No. of Days:" />
                               <Label fx:id="dDays" layoutX="87.0" layoutY="204.0" prefHeight="17.0" prefWidth="235.0" />
-                              <JFXButton fx:id="dBook" buttonType="RAISED" layoutX="25.0" layoutY="232.0" onAction="#Book" prefHeight="44.0" prefWidth="95.0" text="Book" />
+                              <JFXButton fx:id="dBook" buttonType="RAISED" layoutX="25.0" layoutY="232.0" onAction="#Book" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Book" textFill="WHITE" />
                            </children>
                            <effect>
                               <DropShadow />
                            </effect>
                         </AnchorPane>
-                        <FlowPane layoutX="4.0" layoutY="8.0" prefHeight="538.0" prefWidth="810.0">
+                        <FlowPane layoutX="4.0" layoutY="8.0" prefHeight="538.0" prefWidth="750.0">
                            <children>
-                              <JFXTreeTableView fx:id="PackageInfoTable" prefHeight="538.0" prefWidth="810.0">
+                              <JFXTreeTableView fx:id="PackageInfoTable" prefHeight="538.0" prefWidth="750.0">
                                  <effect>
                                     <DropShadow />
                                  </effect></JFXTreeTableView>
@@ -66,9 +66,9 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <FlowPane prefHeight="555.0" prefWidth="1200.0">
+                        <FlowPane prefHeight="555.0" prefWidth="1150.0">
                            <children>
-                              <JFXTreeTableView fx:id="TransInfoTable" prefHeight="555.0" prefWidth="1200.0" />
+                              <JFXTreeTableView fx:id="TransInfoTable" prefHeight="555.0" prefWidth="1150.0" />
                            </children>
                         </FlowPane>
                      </children></AnchorPane>

@@ -64,7 +64,7 @@ public class UserPageContentController implements Initializable {
             System.exit(1);
         }
     }
-    public static int userId = LoginModel.userId;
+    public static int userId;
 
     @FXML
     private Label dFood;
@@ -157,6 +157,7 @@ public class UserPageContentController implements Initializable {
     }
 
     //END add packages data to TreeTable in view packages
+    
     //START load data of selected packages from TreeTable to view label in view packages
     public void setPackageToLabel(String place) {
         String query = "select * from package where place='" + place + "';\n";
@@ -241,6 +242,7 @@ public class UserPageContentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        userId = LoginModel.userId;
         mainUserTab.widthProperty().addListener((observable, oldValue, newValue)
                 -> {
             mainUserTab.setTabMinWidth(((mainUserTab.getWidth()) / 2) - 5);

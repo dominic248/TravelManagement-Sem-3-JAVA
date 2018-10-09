@@ -47,8 +47,8 @@ import travelmanagement.database.SqliteConnection;
  */
 public class PackageBookingContentController implements Initializable {
 
-    int packageid = UserPageContentController.booking;
-    int userId = LoginModel.userId;
+    static int packageid;
+    static int userId;
     int stay, food, bus, train, air, total, checkedTravel = 0;
     String travelmode = null;
 
@@ -220,6 +220,8 @@ public class PackageBookingContentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        packageid = UserPageContentController.booking;
+        userId = LoginModel.userId;
         getPackageData();
 
         dBus.setToggleGroup(travelling);

@@ -212,7 +212,7 @@ public class AdminPageContentController implements Initializable {
     private Image image;
     private File file;
     private FileInputStream imagefis;
-    private FileOutputStream imagefos;
+    
     ObservableList<String> nodaynight = FXCollections.observableArrayList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
  
 
@@ -389,8 +389,8 @@ public class AdminPageContentController implements Initializable {
                 dAir.setText(Integer.toString(resultSet.getInt("airlinesFee")));
                 dDays.setText(Integer.toString(resultSet.getInt("noDays")) + "day and " + Integer.toString(resultSet.getInt("noNights")) + "night");
                 InputStream input = new ByteArrayInputStream(resultSet.getBytes("pImage"));
-                Image imge = new Image(input);
-                dImage.setImage(imge);
+                Image image = new Image(input);
+                dImage.setImage(image);
             }
         } catch (SQLException e) {
             e.printStackTrace();

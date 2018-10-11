@@ -35,7 +35,7 @@ public class TravelManagement extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/travelmanagement/LoginRegister/LoginRegisterPage.fxml"));
         StackPane pane = loader.load();
         Scene scene = new Scene(pane);
-        scene.getStylesheets().addAll(getClass().getResource("/travelmanagement/LoginRegister/style.css").toExternalForm());
+        scene.getStylesheets().addAll(getClass().getResource("/travelmanagement/style.css").toExternalForm());
 
         stage.setTitle("Travel Management System");
         stage.setScene(scene);

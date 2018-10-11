@@ -58,6 +58,7 @@ import travelmanagement.DisplayContent.Other.UserInfo;
  */
 public class AdminPageContentController implements Initializable {
     
+    
     Connection connection;
     static PreparedStatement preparedStatement = null;
     static ResultSet resultSet = null;
@@ -235,6 +236,66 @@ public class AdminPageContentController implements Initializable {
     
     //START check conditions of null before adding packages data to database
     public void addPackageDB(ActionEvent event) {
+        if(addPlace.getText().isEmpty() ){
+            isaddPlace.setText("Place cannot be empty!");
+        }else{
+            isaddPlace.setText("");
+        }
+        if(addDetails.getText().isEmpty() ){
+            isaddDetails.setText("Description cannot be empty!");
+        }else{
+            isaddDetails.setText("");
+        }
+        if(addNoAdult.getText().isEmpty() ){
+            isaddNoAdult.setText("No. of Adults cannot be empty!");
+        }else{
+            isaddNoAdult.setText("");
+        }
+        if(addNoChild.getText().isEmpty() ){
+            isaddNoChild.setText("No. of Kids cannot be empty!");
+        }else{
+            isaddNoChild.setText("");
+        }
+        if(addStayAm.getText().isEmpty() ){
+            isaddStayAm.setText("Stay Cost cannot be empty!");
+        }else{
+            isaddStayAm.setText("");
+        }
+        if(addFoodAm.getText().isEmpty() ){
+            isaddFoodAm.setText("Food Cost cannot be empty!");
+        }else{
+            isaddFoodAm.setText("");
+        }
+        if(addBusAm.getText().isEmpty() ){
+            isaddBusAm.setText("Bus Cost cannot be empty!");
+        }else{
+            isaddBusAm.setText("");
+        }
+        if(addTrainAm.getText().isEmpty() ){
+            isaddTrainAm.setText("Train Cost cannot be empty!");
+        }else{
+            isaddTrainAm.setText("");
+        }
+        if(addAirAm.getText().isEmpty() ){
+            isaddAirAm.setText("Airlines Cost cannot be empty!");
+        }else{
+            isaddAirAm.setText("");
+        }
+        if(file == null){
+            isaddImage.setText("Image cannot be empty!");
+        }else{
+            isaddAirAm.setText("");
+        }
+        if(addNoDay.getValue() == null){
+            isaddNoDay.setText("No. of Days cannot be empty!");
+        }else{
+            isaddNoDay.setText("");
+        }
+        if(addNoNight.getValue() == null){
+            isaddNoNight.setText("No. of Nights cannot be empty!");
+        }else{
+            isaddNoNight.setText("");
+        }
         if (addPlace.getText().isEmpty() || addDetails.getText().isEmpty() || addNoAdult.getText().isEmpty() || addNoChild.getText().isEmpty()
                 || addStayAm.getText().isEmpty() || addFoodAm.getText().isEmpty() || file == null
                 || addBusAm.getText().isEmpty() || addTrainAm.getText().isEmpty() || addAirAm.getText().isEmpty()
@@ -244,6 +305,19 @@ public class AdminPageContentController implements Initializable {
             try {
                 if (isPackageAdded(addPlace.getText(), addDetails.getText(), addNoAdult.getText(), addNoChild.getText(), addStayAm.getText(), addFoodAm.getText(), addBusAm.getText(), addTrainAm.getText(), addAirAm.getText(), addNoDay.getValue(), addNoNight.getValue())) {
                     System.out.println("Done");
+                    addPlace.setText("");
+                    addDetails.setText("");
+                    addNoAdult.setText("");
+                    addNoChild.setText("");
+                    addStayAm.setText("");
+                    addFoodAm.setText("");
+                    addBusAm.setText("");
+                    addTrainAm.setText("");
+                    addAirAm.setText("");
+                    addNoDay.setValue("");
+                    addNoNight.setValue("");
+                    dImage.setImage(null);
+                    
                 }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AdminPageContentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -263,8 +337,11 @@ public class AdminPageContentController implements Initializable {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setBinaryStream(1, (InputStream) imagefis, (int) file.length());
             preparedStatement.execute();
+            System.out.println("Done");
             return true;
         } catch (SQLException e) {
+            System.out.println("Failed");
+            e.printStackTrace();
             return false;
         }
     }
@@ -279,7 +356,8 @@ public class AdminPageContentController implements Initializable {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                packagedata.add(new PackageInfo(resultSet.getString("place"),
+                packagedata.add(new PackageInfo(Integer.toString(resultSet.getInt("packId")),
+                        resultSet.getString("place"),
                         Integer.toString(resultSet.getInt("noAdult")),
                         Integer.toString(resultSet.getInt("noChild")),
                         Integer.toString(resultSet.getInt("stayFee")),
@@ -371,13 +449,15 @@ public class AdminPageContentController implements Initializable {
     //END add user data to TreeTable in view users
     
     //START load data of selected packages from TreeTable to view label in view packages
-    public void setPackageToLabel(String place) {
-        String query = "select * from package where place='"+place+"';\n";
+    public void setPackageToLabel(int intpackage) {
+        String query = "select * from package where packId="+intpackage+";\n";
         System.out.println(query);
         try {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
+            System.out.println("pass1");
             if (resultSet.next()) {
+                System.out.println("pass");
                 dPlace.setText(resultSet.getString("place"));
                 dDetails.setText(resultSet.getString("pDetails"));
                 dAdults.setText(Integer.toString(resultSet.getInt("noAdult")));
@@ -553,9 +633,11 @@ public class AdminPageContentController implements Initializable {
             if (selectedItem == null )
                 return;
             TreeItem<PackageInfo> tpackage=PackageInfoTable.getSelectionModel().getSelectedItem();
-            String stpackage=tpackage.getValue().getName().toString();           
+            String stpackage=tpackage.getValue().getId().toString();           
             stpackage=stpackage.substring(23,stpackage.length()-1);
-            setPackageToLabel(stpackage);
+            int intpackage=Integer.valueOf(stpackage);
+            System.out.println(intpackage);
+            setPackageToLabel(intpackage);
         });
         //END get place name of select row from tree table
         

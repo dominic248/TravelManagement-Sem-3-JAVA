@@ -1,0 +1,65 @@
+#LrootPane_css{
+    -fx-background-image:url("b1.png"); 
+    -fx-background-repeat:  no-repeat;
+    -fx-background-size:  cover, auto;   
+}
+#image_css{
+    -fx-background-image:url("image.jpg"); 
+    -fx-background-repeat:  no-repeat;
+    -fx-background-size:  cover, auto; 
+}
+#buttons{
+    -fx-background-color: #d30699;
+    -fx-background-radius: 50;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-weight: medium;
+    -fx-font-family: 'Roboto';
+    -fx-pref-width: 125;
+    -fx-pref-height: 35;
+}
+#input{
+    -fx-prompt-text-fill: BLACK;
+    -jfx-focus-color: BLUE;
+    -jfx-unfocus-color: BLACK;
+    -fx-font-size: 12px;
+    -fx-font-weight: regular;
+    -fx-font-family: 'Roboto';
+    -fx-pref-width: 200;
+    -fx-pref-height: 25;
+}
+#warning{
+    -fx-text-fill: RED;
+    -fx-font-size: 12px;
+    -fx-font-weight: regular;
+    -fx-font-family: 'Roboto';
+    -fx-pref-width: 200;
+    -fx-pref-height: 20;
+}
+.jfx-hamburger StackPane {
+	-fx-background-color: white;
+}
+#mainHeader{
+    -fx-background-color:  red;
+}
+#headTitle{
+    -fx-text-fill: #6200ee;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Roboto';
+    -fx-pref-width: 353;
+    -fx-pref-height: 25;
+    -fx-translate-x: 0;
+}
+#headInfo{
+    -fx-text-fill: GREY;
+    -fx-font-size: 12px;
+    -fx-font-weight: regular;
+    -fx-font-family: 'Roboto';
+    -fx-pref-width: 353;
+    -fx-pref-height: 20;
+    -fx-translate-x: 0;
+}
+#logout{
+    -fx-background-image: url("DisplayContent\logout.png"); 
+}

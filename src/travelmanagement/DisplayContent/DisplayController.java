@@ -14,8 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -64,15 +66,16 @@ public class DisplayController implements Initializable {
     @FXML
     private Pane mainHeader;
 
-    public void Logout() {
+    public void Logout(MouseEvent event) {
         try {
             Stage stage;
             Parent loader;
 
             loader = FXMLLoader.load(getClass().getResource("/travelmanagement/LoginRegister/LoginRegisterPage.fxml"));
-
+            Scene scene = new Scene(loader);
+            scene.getStylesheets().addAll(getClass().getResource("/travelmanagement/style.css").toExternalForm());
             stage = TravelManagement.stage;
-            stage.getScene().setRoot(loader);
+            stage.setScene(scene);
             stage.show();
 
         } catch (IOException ex) {
@@ -82,15 +85,18 @@ public class DisplayController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        mainAnchorPane.getStylesheets().addAll(getClass().getResource("/travelmanagement/style.css").toExternalForm());
         userId = LoginModel.userId;
         usertype = LoginRegisterController.usertype;
         try {
             if ("user".equals(usertype)) {
                 AnchorPane newLoadedPane = FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/UserPage/UserPageContent.fxml"));
                 mainAnchorPane.getChildren().add(newLoadedPane);
+                mainHeading.setText("User Panel");
             } else if ("admin".equals(usertype)) {
                 AnchorPane newLoadedPane = FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/AdminPage/AdminPageContent.fxml"));
                 mainAnchorPane.getChildren().add(newLoadedPane);
+                mainHeading.setText("Admin Panel");
             }
         } catch (IOException ex) {
             Logger.getLogger(DisplayController.class.getName()).log(Level.SEVERE, null, ex);

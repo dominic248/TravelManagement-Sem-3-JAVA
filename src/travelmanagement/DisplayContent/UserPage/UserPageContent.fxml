@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
@@ -16,50 +12,7 @@
          <tabs>
             <Tab fx:id="ViewPlacesTab" style="-fx-background-color: red;" text="View places">
                <content>
-                  <AnchorPane fx:id="ViewPlaces" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ImageView fx:id="dImage" fitHeight="224.0" fitWidth="365.0" layoutX="771.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                           <effect>
-                              <DropShadow />
-                           </effect></ImageView>
-                        <AnchorPane layoutX="771.0" layoutY="248.0" prefHeight="292.0" prefWidth="365.0" style="-fx-background-color: white;">
-                           <children>
-                              <Label layoutX="14.0" layoutY="13.0" text="Place:" />
-                              <Label fx:id="dPlace" layoutX="88.0" layoutY="13.0" prefHeight="17.0" prefWidth="256.0" />
-                              <Label layoutX="14.0" layoutY="43.0" text="Description:" />
-                              <Label fx:id="dDetails" alignment="TOP_LEFT" layoutX="87.0" layoutY="43.0" prefHeight="63.0" prefWidth="259.0" textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="216.0" layoutY="111.0" text="No. of Kids:" />
-                              <Label layoutX="14.0" layoutY="111.0" text="No. of Adults:" />
-                              <Label fx:id="dAdults" layoutX="103.0" layoutY="111.0" prefHeight="17.0" prefWidth="37.0" />
-                              <Label fx:id="dKids" layoutX="284.0" layoutY="111.0" prefHeight="17.0" prefWidth="37.0" />
-                              <Label fx:id="dFood" layoutX="284.0" layoutY="141.0" prefHeight="17.0" prefWidth="37.0" />
-                              <Label fx:id="dStay" layoutX="103.0" layoutY="141.0" prefHeight="17.0" prefWidth="37.0" />
-                              <Label layoutX="14.0" layoutY="141.0" text="Stay Cost:" />
-                              <Label layoutX="218.0" layoutY="141.0" text="Food Cost:" />
-                              <Label fx:id="dBus" layoutX="67.0" layoutY="172.0" prefHeight="17.0" prefWidth="50.0" />
-                              <Label layoutX="14.0" layoutY="172.0" text="Bus Cost:" />
-                              <Label layoutX="129.0" layoutY="172.0" text="Train Cost:" />
-                              <Label fx:id="dTrain" layoutX="191.0" layoutY="172.0" prefHeight="17.0" prefWidth="50.0" />
-                              <Label layoutX="247.0" layoutY="172.0" text="Flight Cost:" />
-                              <Label fx:id="dAir" layoutX="314.0" layoutY="172.0" prefHeight="17.0" prefWidth="50.0" />
-                              <Label layoutX="14.0" layoutY="204.0" text="No. of Days:" />
-                              <Label fx:id="dDays" layoutX="87.0" layoutY="204.0" prefHeight="17.0" prefWidth="235.0" />
-                              <JFXButton fx:id="dBook" buttonType="RAISED" layoutX="25.0" layoutY="232.0" onAction="#Book" prefHeight="44.0" prefWidth="95.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Book" textFill="WHITE" />
-                           </children>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </AnchorPane>
-                        <FlowPane layoutX="4.0" layoutY="8.0" prefHeight="538.0" prefWidth="750.0">
-                           <children>
-                              <JFXTreeTableView fx:id="PackageInfoTable" prefHeight="538.0" prefWidth="750.0">
-                                 <effect>
-                                    <DropShadow />
-                                 </effect></JFXTreeTableView>
-                           </children>
-                        </FlowPane>
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane fx:id="ViewPlaces" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
             <Tab fx:id="ViewBuyedTab" style="-fx-background-color: red;" text="Transactions">

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.LoginRegister.LoginRegisterController">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.LoginRegister.LoginRegisterController">
    <children>
       <JFXTabPane fx:id="TypeTab" prefHeight="650.0" prefWidth="1200.0">
          <tabs>
@@ -24,36 +24,30 @@
                            <tabs>
                               <Tab fx:id="UserLoginTab" style="-fx-background-color: red;" text="User Login">
                                 <content>
-                                  <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1060.0">
+                                  <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <AnchorPane layoutX="57.0" layoutY="35.0">
+                                          <Pane layoutX="62.0" layoutY="22.0" prefHeight="528.0" prefWidth="1090.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
                                              <children>
-                                                <Pane layoutX="5.0" layoutY="-13.0" prefHeight="528.0" prefWidth="1090.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
-                                                   <children>
-                                                      <Label layoutX="488.0" layoutY="80.0" text="Sign in" textAlignment="CENTER" textFill="#003fff">
-                                                         <font>
-                                                            <Font name="Microsoft JhengHei UI Light" size="26.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label id="welcome" layoutX="472.0" layoutY="121.0" prefHeight="50.0" prefWidth="114.0" text="Welcome, to Travel Mangement System" textAlignment="CENTER" textFill="#868686" wrapText="true" />
-                                                      <JFXTextField id="acc_no_c" fx:id="Lusername" focusColor="#d30699" labelFloat="true" layoutX="421.0" layoutY="189.0" prefHeight="25.0" prefWidth="216.0" promptText="Username" />
-                                                      <JFXPasswordField id="pass_c" fx:id="Lpassword" focusColor="#d30699" labelFloat="true" layoutX="421.0" layoutY="245.0" prefHeight="25.0" prefWidth="216.0" promptText="Password" />
-                                                      <JFXButton id="login_btn_c" fx:id="Llogin_btn" buttonType="RAISED" layoutX="466.0" layoutY="342.0" onAction="#Login" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
-                                                         <font>
-                                                            <Font size="14.0" />
-                                                         </font>
-                                                      </JFXButton>
-                                                      <Label layoutX="480.0" layoutY="292.0" prefHeight="25.0" prefWidth="98.0" text="Forgot Password?" textAlignment="CENTER" textFill="#464646" wrapText="true" />
-                                                      <Label fx:id="LisConnected" layoutX="343.0" layoutY="396.0" prefHeight="25.0" prefWidth="370.0" text="Status" textFill="RED" />
-                                                      <Label fx:id="Lisusername" layoutX="421.0" layoutY="214.0" prefHeight="17.0" prefWidth="216.0" textFill="RED" />
-                                                      <Label fx:id="Lispassword" layoutX="420.0" layoutY="270.0" prefHeight="17.0" prefWidth="217.0" textFill="RED" />
-                                                   </children>
-                                                   <effect>
-                                                      <DropShadow color="#3c3c3c" />
-                                                   </effect>
-                                                </Pane>
+                                                <Label layoutX="488.0" layoutY="80.0" text="Sign in" textAlignment="CENTER" textFill="#003fff">
+                                                   <font>
+                                                      <Font name="Microsoft JhengHei UI Light" size="26.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label id="welcome" layoutX="472.0" layoutY="121.0" prefHeight="50.0" prefWidth="114.0" text="Welcome, to Travel Mangement System" textAlignment="CENTER" textFill="#868686" wrapText="true" />
+                                                <JFXTextField id="input" fx:id="Lusername" focusColor="#d30699" labelFloat="true" layoutX="430.0" layoutY="201.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
+                                                <JFXPasswordField id="input" fx:id="Lpassword" focusColor="#d30699" labelFloat="true" layoutX="430.0" layoutY="264.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" />
+                                                <JFXButton id="buttons" fx:id="Llogin_btn" buttonType="RAISED" layoutX="467.0" layoutY="340.0" onAction="#Login" prefHeight="34.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </JFXButton>
+                                                <Label id="warning" fx:id="Lisusername" layoutX="429.0" layoutY="226.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                                <Label id="warning" fx:id="Lispassword" layoutX="429.0" layoutY="289.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
                                              </children>
-                                          </AnchorPane>
+                                             <effect>
+                                                <DropShadow color="#3c3c3c" />
+                                             </effect>
+                                          </Pane>
                                        </children>
                                     </AnchorPane>
                                 </content>
@@ -64,18 +58,17 @@
                                        <children>
                                           <Pane layoutX="26.0" layoutY="38.0" prefHeight="512.0" prefWidth="1141.0" style="-fx-background-color: #d2d2d2;">
                                              <children>
-                                                <JFXTextField fx:id="Rusername" labelFloat="true" layoutX="417.0" layoutY="149.0" prefHeight="25.0" prefWidth="166.0" promptText="Username" />
-                                                <JFXPasswordField fx:id="Rpassword" labelFloat="true" layoutX="417.0" layoutY="208.0" prefHeight="25.0" prefWidth="166.0" promptText="Password" />
-                                                <JFXTextField fx:id="Remail" labelFloat="true" layoutX="417.0" layoutY="324.0" prefHeight="25.0" prefWidth="166.0" promptText="E-mail ID" />
-                                                <JFXTextField fx:id="Rmobile" labelFloat="true" layoutX="417.0" layoutY="268.0" prefHeight="25.0" prefWidth="166.0" promptText="Mobile No." />
-                                                <Label fx:id="RisConnected" layoutX="347.0" layoutY="479.0" prefHeight="17.0" prefWidth="314.0" text="Connected" />
-                                                <JFXButton fx:id="Rregister_btn" buttonType="RAISED" layoutX="450.0" layoutY="404.0" onAction="#Register" prefHeight="45.0" prefWidth="101.0" style="-fx-background-color: #c51162; -fx-background-radius: 50; -fx-border-radius: 50;" text="Register" textFill="WHITE" />
-                                                <Label fx:id="RisUsername" layoutX="417.0" layoutY="174.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
-                                                <Label fx:id="RisPassword" layoutX="417.0" layoutY="233.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
-                                                <Label fx:id="RisEmail" layoutX="417.0" layoutY="349.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
-                                                <Label fx:id="RisMobile" layoutX="417.0" layoutY="293.0" prefHeight="17.0" prefWidth="166.0" textFill="RED" />
-                                                <JFXTextField fx:id="Rname" labelFloat="true" layoutX="417.0" layoutY="91.0" prefHeight="25.0" prefWidth="174.0" promptText="Name" />
-                                                <Label fx:id="RisName" layoutX="417.0" layoutY="116.0" prefHeight="17.0" prefWidth="174.0" textFill="RED" />
+                                                <JFXTextField id="input" fx:id="Rusername" labelFloat="true" layoutX="484.0" layoutY="196.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
+                                                <JFXPasswordField id="input" fx:id="Rpassword" labelFloat="true" layoutX="484.0" layoutY="256.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" />
+                                                <JFXTextField id="input" fx:id="Remail" labelFloat="true" layoutX="484.0" layoutY="378.0" prefHeight="25.0" prefWidth="200.0" promptText="E-mail ID" />
+                                                <JFXTextField id="input" fx:id="Rmobile" labelFloat="true" layoutX="484.0" layoutY="317.0" prefHeight="25.0" prefWidth="200.0" promptText="Mobile No." />
+                                                <JFXButton id="buttons" fx:id="Rregister_btn" buttonType="RAISED" layoutX="533.0" layoutY="443.0" onAction="#Register" prefHeight="45.0" prefWidth="101.0" text="Register" textFill="WHITE" />
+                                                <Label id="warning" fx:id="RisUsername" layoutX="484.0" layoutY="221.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                                <Label id="warning" fx:id="RisPassword" layoutX="484.0" layoutY="281.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                                <Label id="warning" fx:id="RisEmail" layoutX="484.0" layoutY="403.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                                <Label id="warning" fx:id="RisMobile" layoutX="484.0" layoutY="342.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                                <JFXTextField id="input" fx:id="Rname" labelFloat="true" layoutX="484.0" layoutY="136.0" prefHeight="25.0" prefWidth="200.0" promptText="Name" />
+                                                <Label id="warning" fx:id="RisName" layoutX="484.0" layoutY="161.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
                                              </children>
                                           </Pane>
                                        </children>
@@ -98,7 +91,7 @@
                                 <content>
                                   <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Pane layoutX="121.0" layoutY="58.0" prefHeight="476.0" prefWidth="968.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
+                                          <Pane layoutX="116.0" layoutY="55.0" prefHeight="476.0" prefWidth="968.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
                                              <children>
                                                 <Label layoutX="444.0" layoutY="63.0" text="Sign in" textAlignment="CENTER" textFill="#003fff">
                                                    <font>
@@ -106,17 +99,15 @@
                                                    </font>
                                                 </Label>
                                                 <Label id="welcome" layoutX="428.0" layoutY="104.0" prefHeight="50.0" prefWidth="114.0" text="Welcome, to Travel Mangement System" textAlignment="CENTER" textFill="#868686" wrapText="true" />
-                                                <JFXTextField id="acc_no_c" fx:id="Ausername" focusColor="#d30699" labelFloat="true" layoutX="377.0" layoutY="172.0" prefHeight="25.0" prefWidth="216.0" promptText="Username" />
-                                                <JFXPasswordField id="pass_c" fx:id="Apassword" focusColor="#d30699" labelFloat="true" layoutX="377.0" layoutY="228.0" prefHeight="25.0" prefWidth="216.0" promptText="Password" />
-                                                <JFXButton id="login_btn_c" fx:id="Alogin_btn" buttonType="RAISED" layoutX="422.0" layoutY="325.0" onAction="#AdminLogin" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
+                                                <JFXTextField id="input" fx:id="Ausername" focusColor="#d30699" labelFloat="true" layoutX="387.0" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
+                                                <JFXPasswordField id="input" fx:id="Apassword" focusColor="#d30699" labelFloat="true" layoutX="387.0" layoutY="226.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" />
+                                                <JFXButton id="buttons" fx:id="Alogin_btn" buttonType="RAISED" layoutX="423.0" layoutY="313.0" onAction="#AdminLogin" prefHeight="34.0" prefWidth="129.0" style="-fx-background-radius: 50;" text="Login" textAlignment="CENTER" textFill="WHITE">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </JFXButton>
-                                                <Label layoutX="436.0" layoutY="275.0" prefHeight="25.0" prefWidth="98.0" text="Forgot Password?" textAlignment="CENTER" textFill="#464646" wrapText="true" />
-                                                <Label fx:id="LisConnected1" layoutX="299.0" layoutY="379.0" prefHeight="25.0" prefWidth="370.0" text="Status" textFill="RED" />
-                                                <Label fx:id="Aisusername" layoutX="377.0" layoutY="197.0" prefHeight="17.0" prefWidth="216.0" textFill="RED" />
-                                                <Label fx:id="Aispassword" layoutX="376.0" layoutY="253.0" prefHeight="17.0" prefWidth="217.0" textFill="RED" />
+                                                <Label id="warning" fx:id="Aisusername" layoutX="387.0" layoutY="197.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                                <Label id="warning" fx:id="Aispassword" layoutX="387.0" layoutY="251.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
                                              </children>
                                              <effect>
                                                 <DropShadow color="#3c3c3c" />

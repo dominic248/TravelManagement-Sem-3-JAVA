@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
  */
 //START Class for View Package Table
 public class PackageInfo extends RecursiveTreeObject<PackageInfo> {
-
+    public StringProperty packageId;
     public StringProperty place;
     //StringProperty details;
     public StringProperty noAdult;
@@ -27,7 +27,8 @@ public class PackageInfo extends RecursiveTreeObject<PackageInfo> {
     public StringProperty airAm;
     public StringProperty noDays;
 
-    public PackageInfo(String place, String noAdult, String noChild, String stayAm, String foodAm, String busAm, String trainAm, String airAm, String noDays) {
+    public PackageInfo(String packageId,String place, String noAdult, String noChild, String stayAm, String foodAm, String busAm, String trainAm, String airAm, String noDays) {
+        this.packageId = new SimpleStringProperty(packageId);
         this.place = new SimpleStringProperty(place);
         //this.details = new SimpleStringProperty(details);
         this.noAdult = new SimpleStringProperty(noAdult);
@@ -40,8 +41,8 @@ public class PackageInfo extends RecursiveTreeObject<PackageInfo> {
         this.noDays = new SimpleStringProperty(noDays);
     }
 
-    public StringProperty getName() {
-        return place;
+    public StringProperty getId() {
+        return packageId;
     }
 }
     //END Class for View Package Table

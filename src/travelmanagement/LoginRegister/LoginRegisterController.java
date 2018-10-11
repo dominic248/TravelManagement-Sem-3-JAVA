@@ -52,14 +52,12 @@ public class LoginRegisterController implements Initializable {
     @FXML
     private JFXTabPane TypeTab;
 
-    @FXML
-    private Label LisConnected;
+
 
     @FXML
     private Label RisEmail;
 
-    @FXML
-    private Label LisConnected1;
+
 
     @FXML
     private Tab UserRegisterTab;
@@ -118,8 +116,7 @@ public class LoginRegisterController implements Initializable {
     @FXML
     private Tab AdminTab;
 
-    @FXML
-    private Label RisConnected;
+
 
     @FXML
     private Label RisPassword;
@@ -286,11 +283,7 @@ public class LoginRegisterController implements Initializable {
             }
         });
 
-        if (dbConnected.isDbConnected()) {
-            LisConnected.setText("Connected");
-        } else {
-            LisConnected.setText("Disconnected");
-        }
+        
 
         Rusername.textProperty().addListener((observable, oldValue, newValue) -> {
 

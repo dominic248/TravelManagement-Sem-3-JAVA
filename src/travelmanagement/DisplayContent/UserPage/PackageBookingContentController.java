@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXToggleButton;
 import com.jfoenix.controls.JFXDatePicker;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,8 +25,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -49,7 +52,7 @@ public class PackageBookingContentController implements Initializable {
 
     static int packageid;
     static int userId;
-    int stay, food, bus, train, air, total, checkedTravel = 0;
+    static int stay, food, bus, train, air, total, checkedTravel = 0;
     String travelmode = null;
 
     Connection connection;
@@ -62,6 +65,9 @@ public class PackageBookingContentController implements Initializable {
             System.exit(1);
         }
     }
+    
+    @FXML
+    private AnchorPane booking;
 
     @FXML
     private BorderPane imagepane;
@@ -88,7 +94,7 @@ public class PackageBookingContentController implements Initializable {
     private JFXDatePicker dDate;
 
     @FXML
-    private JFXButton dPay, dBook;
+    private JFXButton dPay, dBook,Cancel;
 
     @FXML
     private Label dKids;
@@ -190,7 +196,7 @@ public class PackageBookingContentController implements Initializable {
     }
     //END check if booking exists
 
-    public void BookPackage() {
+    public void BookPackage(ActionEvent event) {
 
         if (dFood.getText() != "Yes") {
             food = 0;
@@ -201,6 +207,8 @@ public class PackageBookingContentController implements Initializable {
         }
         if (dDate.getValue() == null) {
             System.out.println("Date is null");
+            dDate.setStyle("-fx-background-color: yellow;");
+            dDate.setPromptText("Please select a date!");
         } else if (bookingExists(packageid, userId)) {
             dBook.setDisable(true);
         } else {
@@ -217,10 +225,32 @@ public class PackageBookingContentController implements Initializable {
             }
         }
     }
+    
+    
+     @FXML
+    void Cancel(ActionEvent event) {
+        booking.getChildren().clear();
+        try {
+            booking.getChildren().add(FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/UserPage/ViewPlacesContent.fxml")));
+            System.out.println("loaded");
+        } catch (IOException ex) {
+            Logger.getLogger(UserPageContentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void PayPackage(ActionEvent event){
+        booking.getChildren().clear();
+        try {
+            booking.getChildren().add(FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/UserPage/PackagePaymentContent.fxml")));
+            System.out.println("loaded");
+        } catch (IOException ex) {
+            Logger.getLogger(UserPageContentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        packageid = UserPageContentController.booking;
+        packageid = ViewPlacesContentController.booking;
         userId = LoginModel.userId;
         getPackageData();
 

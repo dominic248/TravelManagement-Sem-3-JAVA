@@ -10,8 +10,8 @@
 
 <AnchorPane fx:id="payment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.UserPage.PackagePaymentContentController">
    <children>
-      <RadioButton layoutX="478.0" layoutY="133.0" mnemonicParsing="false" text="Credit Card" />
-      <RadioButton layoutX="589.0" layoutY="133.0" mnemonicParsing="false" text="Debit Card" />
+      <RadioButton fx:id="credit" layoutX="478.0" layoutY="133.0" mnemonicParsing="false" text="Credit Card" />
+      <RadioButton fx:id="debit" layoutX="589.0" layoutY="133.0" mnemonicParsing="false" text="Debit Card" />
       <JFXTextField fx:id="card" layoutX="478.0" layoutY="195.0" prefHeight="25.0" prefWidth="200.0" promptText="Card Number" />
       <JFXTextField fx:id="cvv" layoutX="478.0" layoutY="265.0" prefHeight="25.0" prefWidth="200.0" promptText="CVV Number" />
       <JFXTextField fx:id="exp" layoutX="478.0" layoutY="338.0" prefHeight="25.0" prefWidth="200.0" promptText="Expiration MM/YYYY" />

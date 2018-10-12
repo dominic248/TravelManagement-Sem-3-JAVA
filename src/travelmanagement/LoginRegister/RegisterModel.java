@@ -61,6 +61,7 @@ public class RegisterModel {
             return true;
 
         } catch (SQLException e) {
+            e.printStackTrace();
             System.out.println("Error!");
             return false;
         }

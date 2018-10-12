@@ -50,8 +50,7 @@ import travelmanagement.database.SqliteConnection;
  */
 public class PackageBookingContentController implements Initializable {
 
-    static int packageid;
-    static int userId;
+    public static int packageid,userId;
     static int stay, food, bus, train, air, total, checkedTravel = 0;
     String travelmode = null;
 

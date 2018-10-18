@@ -51,7 +51,7 @@ public class RegisterModel {
 
     }
 
-    public boolean isRegister(String name, String username, String password, int mobile, String email) throws SQLException {
+    public boolean isRegister(String name, String username, String password, String mobile, String email) throws SQLException {
         String query = "INSERT INTO `users` (name,username,password,mobile,email,userDate) VALUES ('"+name+"','"+username+"','"+password+"',"+mobile+",'"+email+"',datetime('now', 'localtime'));\n";
         try {
             preparedStatement = connection.prepareStatement(query);

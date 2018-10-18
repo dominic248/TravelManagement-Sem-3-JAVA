@@ -7,6 +7,8 @@ package travelmanagement.LoginRegister;
 
 import javafx.scene.layout.Pane;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
@@ -18,6 +20,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +29,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
 import travelmanagement.database.DBConnected;
 import javafx.stage.Stage;
@@ -35,7 +40,8 @@ import javafx.stage.Stage;
  * @author dms
  */
 public class LoginRegisterController implements Initializable {
-    public static String usertype=null;
+
+    public static String usertype = null;
     Pattern emailPattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
     Pattern usernamePattern = Pattern.compile("^[a-z0-9_-]{6,14}$");
@@ -43,7 +49,7 @@ public class LoginRegisterController implements Initializable {
     DBConnected dbConnected = new DBConnected();
     RegisterModel registerModel = new RegisterModel();
 
-     @FXML
+    @FXML
     private Tab AdminLoginTab;
 
     @FXML
@@ -52,12 +58,8 @@ public class LoginRegisterController implements Initializable {
     @FXML
     private JFXTabPane TypeTab;
 
-
-
     @FXML
     private Label RisEmail;
-
-
 
     @FXML
     private Tab UserRegisterTab;
@@ -116,7 +118,8 @@ public class LoginRegisterController implements Initializable {
     @FXML
     private Tab AdminTab;
 
-
+    @FXML
+    private StackPane root;
 
     @FXML
     private Label RisPassword;
@@ -138,7 +141,6 @@ public class LoginRegisterController implements Initializable {
 
     @FXML
     private Label Aispassword;
-
 
     @FXML
     public void Login(ActionEvent event) throws SQLException, IOException {
@@ -162,7 +164,7 @@ public class LoginRegisterController implements Initializable {
             try {
                 if (loginModel.isLogin(Lusername.getText(), Lpassword.getText())) {
                     Lispassword.setText("Username and password is correct");
-                    usertype="user";
+                    usertype = "user";
                     stage = (Stage) Llogin_btn.getScene().getWindow();
                     loader = FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/DisplayPage.fxml"));
                     Scene scene = new Scene(loader);
@@ -178,6 +180,8 @@ public class LoginRegisterController implements Initializable {
             }
         }
     }
+
+    
 
     public void Register(ActionEvent event) throws SQLException {
         if (Rusername.getText().isEmpty()) {
@@ -213,13 +217,36 @@ public class LoginRegisterController implements Initializable {
                 || registerModel.ifUsernameExists(Rusername.getText())) {
             return;
         } else {
-            if (registerModel.isRegister(Rname.getText(),Rusername.getText(), Rpassword.getText(),Integer.valueOf(Rmobile.getText()),Remail.getText())) {
+            if (registerModel.isRegister(Rname.getText(), Rusername.getText(), Rpassword.getText(), Rmobile.getText(), Remail.getText())) {
                 System.out.println("Done");
+                Rusername.setText("");
+                Rname.setText("");
+                Rpassword.setText("");
+                Rmobile.setText("");
+                Remail.setText("");
+                RisUsername.setText("");
+                RisEmail.setText("");
+
+                JFXDialogLayout taskdone = new JFXDialogLayout();
+                taskdone.setHeading(new Text("Successful!"));
+
+                taskdone.setBody(new Text("Account created successfully!"));
+                JFXDialog taskdonediag = new JFXDialog(root, taskdone, JFXDialog.DialogTransition.CENTER);
+                JFXButton taskdonebtn = new JFXButton("Okay!");
+                taskdonebtn.setId("buttons");
+                taskdonebtn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        taskdonediag.close();
+                    }
+                });
+                taskdone.setActions(taskdonebtn);
+                taskdonediag.show();
                 UserLoginRegisterTab.getSelectionModel().select(0);
             }
         }
     }
-    
+
     public void AdminLogin(ActionEvent event) throws SQLException, IOException {
         Stage stage;
         Parent loader;
@@ -240,15 +267,14 @@ public class LoginRegisterController implements Initializable {
             Aispassword.setText("");
             if (Ausername.getText().equals("admin") && Apassword.getText().equals("admin")) {
                 Aispassword.setText("Username and password is correct");
-                usertype="admin";
+                usertype = "admin";
                 stage = (Stage) Alogin_btn.getScene().getWindow();
                 loader = FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/DisplayPage.fxml"));
                 Scene scene = new Scene(loader);
                 stage.setScene(scene);
                 stage.show();
                 //loginModel.setLoginTime();
-                
-                
+
             } else {
                 Aispassword.setText("Username or password is wrong");
             }
@@ -259,31 +285,28 @@ public class LoginRegisterController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         TypeTab.widthProperty().addListener((observable, oldValue, newValue)
                 -> {
-            TypeTab.setTabMinWidth(((TypeTab.getWidth()) / 2)-5);
-            TypeTab.setTabMaxWidth(((TypeTab.getWidth()) / 2)-5);
+            TypeTab.setTabMinWidth(((TypeTab.getWidth()) / 2) - 5);
+            TypeTab.setTabMaxWidth(((TypeTab.getWidth()) / 2) - 5);
 
         });
         UserLoginRegisterTab.widthProperty().addListener((observable, oldValue, newValue)
                 -> {
-            UserLoginRegisterTab.setTabMinWidth(((UserLoginRegisterTab.getWidth()) / 2)-5);
-            UserLoginRegisterTab.setTabMaxWidth(((UserLoginRegisterTab.getWidth()) / 2)-5);
+            UserLoginRegisterTab.setTabMinWidth(((UserLoginRegisterTab.getWidth()) / 2) - 5);
+            UserLoginRegisterTab.setTabMaxWidth(((UserLoginRegisterTab.getWidth()) / 2) - 5);
 
         });
         AdminLogin.widthProperty().addListener((observable, oldValue, newValue)
                 -> {
-            AdminLogin.setTabMinWidth(((AdminLogin.getWidth()))-11);
-            AdminLogin.setTabMaxWidth(((AdminLogin.getWidth()))-11);
+            AdminLogin.setTabMinWidth(((AdminLogin.getWidth())) - 11);
+            AdminLogin.setTabMaxWidth(((AdminLogin.getWidth())) - 11);
 
         });
-        
 
         Rmobile.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[0-9]*")) {
                 Rmobile.setText(oldValue);
             }
         });
-
-        
 
         Rusername.textProperty().addListener((observable, oldValue, newValue) -> {
 

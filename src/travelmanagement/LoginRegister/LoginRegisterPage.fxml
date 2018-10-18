@@ -12,21 +12,21 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.LoginRegister.LoginRegisterController">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.LoginRegister.LoginRegisterController">
    <children>
-      <JFXTabPane fx:id="TypeTab" prefHeight="650.0" prefWidth="1200.0">
+      <JFXTabPane fx:id="TypeTab" prefHeight="700.0" prefWidth="1200.0">
          <tabs>
             <Tab fx:id="UserTab" style="-fx-background-color: red;" text="User">
               <content>
                 <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <JFXTabPane fx:id="UserLoginRegisterTab" prefHeight="674.0" prefWidth="1200.0">
+                        <JFXTabPane fx:id="UserLoginRegisterTab" prefHeight="665.0" prefWidth="1200.0">
                            <tabs>
                               <Tab fx:id="UserLoginTab" style="-fx-background-color: red;" text="User Login">
                                 <content>
                                   <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Pane layoutX="62.0" layoutY="22.0" prefHeight="528.0" prefWidth="1090.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
+                                          <Pane layoutX="55.0" layoutY="50.0" prefHeight="528.0" prefWidth="1090.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20px;">
                                              <children>
                                                 <Label layoutX="488.0" layoutY="80.0" text="Sign in" textAlignment="CENTER" textFill="#003fff">
                                                    <font>
@@ -56,7 +56,7 @@
                                  <content>
                                     <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Pane layoutX="26.0" layoutY="38.0" prefHeight="512.0" prefWidth="1141.0" style="-fx-background-color: #d2d2d2;">
+                                          <Pane layoutX="30.0" layoutY="48.0" prefHeight="512.0" prefWidth="1141.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 20px;">
                                              <children>
                                                 <JFXTextField id="input" fx:id="Rusername" labelFloat="true" layoutX="484.0" layoutY="196.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
                                                 <JFXPasswordField id="input" fx:id="Rpassword" labelFloat="true" layoutX="484.0" layoutY="256.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" />
@@ -85,13 +85,13 @@
               <content>
                 <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <JFXTabPane fx:id="AdminLogin" prefHeight="675.0" prefWidth="1200.0">
+                        <JFXTabPane fx:id="AdminLogin" prefHeight="665.0" prefWidth="1200.0">
                            <tabs>
                               <Tab style="-fx-background-color: red;" text="Admin Login">
                                 <content>
                                   <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Pane layoutX="116.0" layoutY="55.0" prefHeight="476.0" prefWidth="968.0" style="-fx-background-color: #ffffff; -fx-background-radius: 40px;">
+                                          <Pane layoutX="116.0" layoutY="76.0" prefHeight="476.0" prefWidth="968.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20px;">
                                              <children>
                                                 <Label layoutX="444.0" layoutY="63.0" text="Sign in" textAlignment="CENTER" textFill="#003fff">
                                                    <font>

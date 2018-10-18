@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="payment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.UserPage.PackagePaymentContentController">
+<AnchorPane fx:id="payment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.UserPage.PackagePaymentContentController">
    <children>
       <RadioButton fx:id="credit" layoutX="478.0" layoutY="133.0" mnemonicParsing="false" text="Credit Card" />
       <RadioButton fx:id="debit" layoutX="589.0" layoutY="133.0" mnemonicParsing="false" text="Debit Card" />

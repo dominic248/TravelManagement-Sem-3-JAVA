@@ -50,7 +50,7 @@ import travelmanagement.database.SqliteConnection;
  */
 public class PackageBookingContentController implements Initializable {
 
-    public static int packageid,userId;
+    public static int packageid, userId;
     static int stay, food, bus, train, air, total, checkedTravel = 0;
     String travelmode = null;
 
@@ -64,7 +64,7 @@ public class PackageBookingContentController implements Initializable {
             System.exit(1);
         }
     }
-    
+
     @FXML
     private AnchorPane booking;
 
@@ -93,7 +93,7 @@ public class PackageBookingContentController implements Initializable {
     private JFXDatePicker dDate;
 
     @FXML
-    private JFXButton dPay, dBook,Cancel;
+    private JFXButton dPay, dBook, Cancel;
 
     @FXML
     private Label dKids;
@@ -131,6 +131,7 @@ public class PackageBookingContentController implements Initializable {
                 dKids.setText(Integer.toString(resultSet.getInt("noChild")));
                 dStay.setText(Integer.toString(resultSet.getInt("stayFee")));
                 stay = resultSet.getInt("stayFee");
+                System.out.println("Stay DB"+stay);
                 food = resultSet.getInt("foodFee");
                 bus = resultSet.getInt("busFee");
                 train = resultSet.getInt("trainFee");
@@ -195,6 +196,28 @@ public class PackageBookingContentController implements Initializable {
     }
     //END check if booking exists
 
+    void Toggling() {
+        System.out.println("Toggle");
+        total = total - checkedTravel;
+        if (dBus.isSelected()) {
+            checkedTravel = bus;
+            travelmode = dBus.getText();
+            System.out.println("bus");
+        } else if (dTrain.isSelected()) {
+            checkedTravel = train;
+            travelmode = dTrain.getText();
+            System.out.println("train");
+        } else if (dAir.isSelected()) {
+            checkedTravel = air;
+            travelmode = dAir.getText();
+            System.out.println("air");
+        }
+        System.out.println("While toggle");
+        total = total + checkedTravel;
+        System.out.println(total);
+        dTotal.setText(Integer.toString(total));
+    }
+
     public void BookPackage(ActionEvent event) {
 
         if (dFood.getText() != "Yes") {
@@ -217,6 +240,8 @@ public class PackageBookingContentController implements Initializable {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.execute();
                 System.out.println("Done");
+                dBook.setDisable(true);
+                dPay.setDisable(false);
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -224,20 +249,19 @@ public class PackageBookingContentController implements Initializable {
             }
         }
     }
-    
-    
-     @FXML
+
+    @FXML
     void Cancel(ActionEvent event) {
         booking.getChildren().clear();
         try {
             booking.getChildren().add(FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/UserPage/ViewPlacesContent.fxml")));
             System.out.println("loaded");
         } catch (IOException ex) {
-            Logger.getLogger(UserPageContentController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PackageBookingContentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void PayPackage(ActionEvent event){
+
+    public void PayPackage(ActionEvent event) {
         booking.getChildren().clear();
         try {
             booking.getChildren().add(FXMLLoader.load(getClass().getResource("/travelmanagement/DisplayContent/UserPage/PackagePaymentContent.fxml")));
@@ -249,6 +273,8 @@ public class PackageBookingContentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        dPay.setDisable(true);
         packageid = ViewPlacesContentController.booking;
         userId = LoginModel.userId;
         getPackageData();
@@ -256,22 +282,28 @@ public class PackageBookingContentController implements Initializable {
         dBus.setToggleGroup(travelling);
         dTrain.setToggleGroup(travelling);
         dAir.setToggleGroup(travelling);
-
+       
+        total=stay;
+        dTotal.setText(Integer.toString(total));
+        System.out.println(total);
         dTravel.setOnAction(e -> {
             System.out.println("Check");
             if (dTravel.isSelected()) {
+
                 checkedTravel = 0;
                 dBus.setDisable(false);
                 dBus.setSelected(true);
-                travelmode = dBus.getText();
+                Toggling();
                 dTrain.setDisable(false);
                 dAir.setDisable(false);
-
+                System.out.println("While tick");
+                System.out.println(total);
             } else {
                 dBus.setDisable(true);
                 dTrain.setDisable(true);
                 dAir.setDisable(true);
                 total = total - checkedTravel;
+                System.out.println(total);
                 dTotal.setText(Integer.toString(total));
             }
         });
@@ -279,22 +311,7 @@ public class PackageBookingContentController implements Initializable {
         travelling.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> ov,
                     Toggle old_toggle, Toggle new_toggle) {
-                total = total - checkedTravel;
-                if (dBus.isSelected()) {
-                    checkedTravel = bus;
-                    travelmode = dBus.getText();
-                    System.out.println("bus");
-                } else if (dTrain.isSelected()) {
-                    checkedTravel = train;
-                    travelmode = dTrain.getText();
-                    System.out.println("train");
-                } else if (dAir.isSelected()) {
-                    checkedTravel = air;
-                    travelmode = dAir.getText();
-                    System.out.println("air");
-                }
-                total = total + checkedTravel;
-                dTotal.setText(Integer.toString(total));
+                Toggling();
             }
         });
 
@@ -310,7 +327,6 @@ public class PackageBookingContentController implements Initializable {
                 dTotal.setText(Integer.toString(total));
             }
         });
-        dTotal.setText(Integer.toString(total = stay));
 
         dDate.setOnAction(e -> {
             System.out.println(dDate.getValue());
@@ -318,9 +334,11 @@ public class PackageBookingContentController implements Initializable {
         imagepane.setCenter(dImage);
         if (bookingExists(packageid, userId)) {
             dBook.setDisable(true);
+            dPay.setDisable(false);
         }
         if (paymentDone(packageid, userId)) {
             dPay.setDisable(true);
+            dBook.setDisable(true);
         }
     }
 }

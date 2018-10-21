@@ -7,7 +7,6 @@
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,13 +15,10 @@
    <children>
       <BorderPane fx:id="imagepane" layoutX="25.0" layoutY="25.0" prefHeight="548.0" prefWidth="530.0" style="-fx-background-color: grey;">
          <center>
-            <ImageView fx:id="dImage" fitHeight="508.0" fitWidth="549.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="dImage" fitHeight="548.0" fitWidth="530.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow />
                </effect>
-               <image>
-                  <Image url="@../../../JavaProject%20Struct.PNG" />
-               </image>
             </ImageView>
          </center>
       </BorderPane>
@@ -44,11 +40,11 @@
             <JFXRadioButton fx:id="dBus" disable="true" layoutX="28.0" layoutY="301.0" text="Bus" />
             <JFXRadioButton fx:id="dTrain" disable="true" layoutX="88.0" layoutY="301.0" text="Train" />
             <JFXRadioButton fx:id="dAir" disable="true" layoutX="158.0" layoutY="301.0" text="Flight" />
-            <JFXButton fx:id="dBook" buttonType="RAISED" layoutX="37.0" layoutY="452.0" onAction="#BookPackage" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Book" textFill="WHITE">
+            <JFXButton id="buttons" fx:id="dBook" buttonType="RAISED" layoutX="37.0" layoutY="452.0" onAction="#BookPackage" prefHeight="38.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Book" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect></JFXButton>
-            <JFXButton fx:id="dPay" buttonType="RAISED" layoutX="211.0" layoutY="452.0" onAction="#PayPackage" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Pay" textFill="WHITE">
+            <JFXButton id="buttons" fx:id="dPay" buttonType="RAISED" layoutX="211.0" layoutY="452.0" onAction="#PayPackage" prefHeight="38.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Pay" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect></JFXButton>
@@ -58,7 +54,7 @@
             <Label fx:id="dDays" layoutX="130.0" layoutY="340.0" text="Label" wrapText="true" />
             <Label layoutX="26.0" layoutY="371.0" text="Date of Travelling:" />
             <JFXDatePicker fx:id="dDate" defaultColor="RED" layoutX="130.0" layoutY="367.0" promptText="Select Date" showWeekNumbers="true" />
-            <JFXButton buttonType="RAISED" layoutX="383.0" layoutY="452.0" onAction="#Cancel" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Cancel" textFill="WHITE">
+            <JFXButton id="buttons" buttonType="RAISED" layoutX="383.0" layoutY="452.0" onAction="#Cancel" prefHeight="38.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Cancel" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect></JFXButton>

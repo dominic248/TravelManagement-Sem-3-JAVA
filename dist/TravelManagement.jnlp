@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TravelManagement.jar" size="1022093" download="eager" />
+    <jar href="TravelManagement.jar" size="496142" download="eager" />
     <jar href="lib\jfoenix.jar" size="2631271" download="eager" />
     <jar href="lib\sqlite-jdbc.jar" size="6733696" download="eager" />
   </resources>

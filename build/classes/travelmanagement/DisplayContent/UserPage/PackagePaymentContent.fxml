@@ -6,33 +6,50 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="payment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.UserPage.PackagePaymentContentController">
+<AnchorPane fx:id="payment" prefHeight="595.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.DisplayContent.UserPage.PackagePaymentContentController">
    <children>
-      <RadioButton fx:id="credit" layoutX="478.0" layoutY="133.0" mnemonicParsing="false" text="Credit Card" />
-      <RadioButton fx:id="debit" layoutX="589.0" layoutY="133.0" mnemonicParsing="false" text="Debit Card" />
-      <JFXTextField fx:id="card" layoutX="478.0" layoutY="195.0" prefHeight="25.0" prefWidth="200.0" promptText="Card Number" />
-      <JFXTextField fx:id="cvv" layoutX="478.0" layoutY="265.0" prefHeight="25.0" prefWidth="200.0" promptText="CVV Number" />
-      <JFXTextField fx:id="exp" layoutX="478.0" layoutY="338.0" prefHeight="25.0" prefWidth="200.0" promptText="Expiration MM/YYYY" />
-      <Label alignment="CENTER" layoutX="428.0" layoutY="416.0" prefWidth="100.0" text="Total Charges:" />
-      <Label fx:id="total" alignment="CENTER" layoutX="628.0" layoutY="416.0" prefWidth="100.0" text="Label" />
-      <Label layoutX="527.0" layoutY="68.0" text="Payment" textAlignment="CENTER" textFill="#003fff">
-         <font>
-            <Font name="Microsoft JhengHei UI Light" size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="isCard" layoutX="478.0" layoutY="220.0" prefHeight="17.0" prefWidth="200.0" />
-      <Label fx:id="isCvv" layoutX="479.0" layoutY="290.0" prefHeight="17.0" prefWidth="200.0" />
-      <Label fx:id="isExp" layoutX="479.0" layoutY="363.0" prefHeight="17.0" prefWidth="200.0" />
-      <JFXButton id="buttons" buttonType="RAISED" layoutX="416.0" layoutY="471.0" onAction="#Pay" prefHeight="35.0" prefWidth="125.0" text="Pay">
-         <effect>
-            <DropShadow />
-         </effect>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="616.0" layoutY="470.0" onAction="#Cancel" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #d30699; -fx-background-radius: 50;" text="Cancel" textFill="WHITE">
-         <effect>
-            <DropShadow />
-         </effect></JFXButton>
+      <StackPane prefHeight="595.0" prefWidth="1150.0">
+         <children>
+            <AnchorPane>
+               <children>
+                  <AnchorPane id="pane" layoutX="84.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="982.0">
+                     <children>
+                        <RadioButton fx:id="credit" layoutX="391.0" layoutY="108.0" mnemonicParsing="false" text="Credit Card" />
+                        <RadioButton fx:id="debit" layoutX="502.0" layoutY="108.0" mnemonicParsing="false" text="Debit Card" />
+                        <JFXTextField fx:id="card" layoutX="391.0" layoutY="170.0" prefHeight="25.0" prefWidth="200.0" promptText="Card Number" />
+                        <JFXTextField fx:id="cvv" layoutX="391.0" layoutY="240.0" prefHeight="25.0" prefWidth="200.0" promptText="CVV Number" />
+                        <JFXTextField fx:id="exp" layoutX="391.0" layoutY="313.0" prefHeight="25.0" prefWidth="200.0" promptText="Expiration MM/YYYY" />
+                        <Label alignment="CENTER" layoutX="341.0" layoutY="391.0" prefWidth="100.0" text="Total Charges:" />
+                        <Label fx:id="total" alignment="CENTER" layoutX="541.0" layoutY="391.0" prefWidth="100.0" text="Label" />
+                        <Label layoutX="440.0" layoutY="43.0" text="Payment" textAlignment="CENTER" textFill="#003fff">
+                           <font>
+                              <Font name="Microsoft JhengHei UI Light" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="isCard" layoutX="391.0" layoutY="195.0" prefHeight="17.0" prefWidth="200.0" />
+                        <Label fx:id="isCvv" layoutX="392.0" layoutY="265.0" prefHeight="17.0" prefWidth="200.0" />
+                        <Label fx:id="isExp" layoutX="392.0" layoutY="338.0" prefHeight="17.0" prefWidth="200.0" />
+                        <JFXButton id="buttons" buttonType="RAISED" layoutX="329.0" layoutY="446.0" onAction="#Pay" prefHeight="35.0" prefWidth="125.0" text="Pay">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton id="buttons" buttonType="RAISED" layoutX="529.0" layoutY="445.0" onAction="#Cancel" prefHeight="38.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Cancel" textFill="WHITE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

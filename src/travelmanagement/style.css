@@ -1,8 +1,10 @@
 #LrootPane_css{
     -fx-background-image:url("b1.png"); 
+    -fx-background-color: rgba(0,0,0,0.5);
     -fx-background-repeat:  no-repeat;
     -fx-background-size:  cover, auto;   
 }
+
 #image_css{
     -fx-background-image:url("image.jpg"); 
     -fx-background-repeat:  no-repeat;
@@ -17,6 +19,20 @@
     -fx-font-family: 'Roboto';
     -fx-pref-width: 125;
     -fx-pref-height: 35;
+}
+#buttons{
+    -fx-background-color: #d30699;
+    -fx-background-radius: 50;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-weight: medium;
+    -fx-font-family: 'Roboto';
+    -fx-pref-width: 125;
+    -fx-pref-height: 35;
+    
+}
+#buttons:hover{
+    -fx-background-color: #000000;  
 }
 #input{
     -fx-prompt-text-fill: BLACK;
@@ -62,4 +78,8 @@
 }
 #logout{
     -fx-background-image: url("DisplayContent\logout.png"); 
+}
+#pane{
+    -fx-background-color: rgba(255,255,255, 0.7);
+    -fx-background-radius: 20px;
 }

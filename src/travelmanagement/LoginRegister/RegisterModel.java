@@ -57,7 +57,7 @@ public class RegisterModel {
             preparedStatement = connection.prepareStatement(query);
 
             System.out.println(query);
-            System.out.println("Hey" + preparedStatement.execute());
+            preparedStatement.execute();
             return true;
 
         } catch (SQLException e) {

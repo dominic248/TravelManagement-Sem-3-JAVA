@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.display.userpage.PackageBookingContentController">
+   <children>
+      <StackPane fx:id="root">
+         <children>
+            <AnchorPane fx:id="booking" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1150.0">
+               <children>
+                  <BorderPane fx:id="imagepane" layoutX="25.0" layoutY="25.0" prefHeight="548.0" prefWidth="530.0" style="-fx-background-color: grey;">
+                     <center>
+                        <ImageView fx:id="dImage" fitHeight="548.0" fitWidth="530.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                     </center>
+                  </BorderPane>
+                  <AnchorPane layoutX="575.0" layoutY="25.0" prefHeight="548.0" prefWidth="546.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label id="bodyTitle" layoutX="26.0" layoutY="22.0" text="Place:" />
+                        <Label id="bodyTitle" layoutX="26.0" layoutY="55.0" text="Description:" />
+                        <Label id="bodyTitle" layoutX="26.0" layoutY="113.0" text="No. of Adults:" />
+                        <Label id="bodyTitle" layoutX="26.0" layoutY="154.0" text="No. of Kids:" />
+                        <Label id="bodyTitle" layoutX="25.0" layoutY="194.0" text="Stay Cost:" />
+                        <Label id="bodyTitle" layoutX="26.0" layoutY="224.0" text="Food:" />
+                        <JFXToggleButton id="bodyBody" fx:id="dFood" layoutX="100.0" layoutY="214.0" prefHeight="25.0" prefWidth="73.0" size="6.0" text="No" toggleColor="RED" toggleLineColor="#ff9c9c" />
+                        <Label id="bodyBody" fx:id="dPlace" layoutX="112.0" layoutY="21.0" prefHeight="17.0" prefWidth="190.0" text="Label" />
+                        <Label id="bodyBody" fx:id="dDetails" alignment="TOP_LEFT" layoutX="112.0" layoutY="54.0" prefHeight="47.0" prefWidth="311.0" text="Label" wrapText="true" />
+                        <Label id="bodyBody" fx:id="dAdults" layoutX="112.0" layoutY="112.0" prefHeight="17.0" prefWidth="190.0" text="Label" />
+                        <Label id="bodyBody" fx:id="dKids" layoutX="112.0" layoutY="153.0" prefHeight="17.0" prefWidth="190.0" text="Label" />
+                        <Label id="bodyBody" fx:id="dStay" layoutX="112.0" layoutY="193.0" prefHeight="17.0" prefWidth="190.0" text="Label" />
+                        <JFXCheckBox id="bodyTitle" fx:id="dTravel" checkedColor="RED" layoutX="26.0" layoutY="261.0" text="Travelling:" />
+                        <JFXRadioButton id="bodyTitle" fx:id="dBus" disable="true" layoutX="28.0" layoutY="301.0" text="Bus" />
+                        <JFXRadioButton id="bodyTitle" fx:id="dTrain" disable="true" layoutX="88.0" layoutY="301.0" text="Train" />
+                        <JFXRadioButton id="bodyTitle" fx:id="dAir" disable="true" layoutX="158.0" layoutY="301.0" text="Flight" />
+                        <JFXButton id="buttons" fx:id="dBook" buttonType="RAISED" layoutX="37.0" layoutY="452.0" onAction="#BookPackage" prefHeight="38.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Book" textFill="WHITE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton id="buttons" fx:id="dPay" buttonType="RAISED" layoutX="211.0" layoutY="452.0" onAction="#PayPackage" prefHeight="38.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Pay" textFill="WHITE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <Label id="bodyTitle" layoutX="26.0" layoutY="408.0" text="Total:" />
+                        <Label id="bodyBody" fx:id="dTotal" layoutX="112.0" layoutY="407.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
+                        <Label id="bodyTitle" layoutX="24.0" layoutY="340.0" text="No. of Days:" />
+                        <Label id="bodyBody" fx:id="dDays" layoutX="112.0" layoutY="339.0" prefHeight="17.0" prefWidth="125.0" text="Label" wrapText="true" />
+                        <Label id="bodyTitle" layoutX="26.0" layoutY="371.0" text="Date of Travelling:" />
+                        <JFXDatePicker id="bodyBody" fx:id="dDate" defaultColor="RED" layoutX="141.0" layoutY="367.0" promptText="Select Date" showWeekNumbers="true" />
+                        <JFXButton id="buttons" buttonType="RAISED" layoutX="383.0" layoutY="452.0" onAction="#Cancel" prefHeight="38.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Cancel" textFill="WHITE">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

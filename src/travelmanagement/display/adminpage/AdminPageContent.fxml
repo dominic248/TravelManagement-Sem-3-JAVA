@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.display.adminpage.AdminPageContentController">
+   <children>
+      <StackPane fx:id="root">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1150.0">
+                <children>
+                  <JFXTabPane fx:id="mainAdminTab" prefHeight="640.0" prefWidth="1150.0">
+                     <tabs>
+                        <Tab fx:id="addPackageTab" style="-fx-background-color: red;" text="Add Package Details">
+                           <content>
+                              <AnchorPane id="LrootPane_css">
+                                 <children>
+                                    <AnchorPane id="pane" layoutX="48.0" layoutY="50.0" minHeight="0.0" minWidth="0.0" prefHeight="503.0" prefWidth="1054.0">
+                                       <children>
+                                          <JFXTextField id="input" fx:id="addPlace" labelFloat="true" layoutX="258.0" layoutY="366.0" prefHeight="25.0" prefWidth="200.0" promptText="Place" />
+                                          <JFXTextField id="input" fx:id="addNoAdult" labelFloat="true" layoutX="534.0" layoutY="152.0" prefWidth="200.0" promptText="No. of Adults" />
+                                          <JFXTextField id="input" fx:id="addNoChild" labelFloat="true" layoutX="534.0" layoutY="219.0" prefWidth="200.0" promptText="No. of Kids" />
+                                          <JFXTextArea id="input" fx:id="addDetails" labelFloat="true" layoutX="534.0" layoutY="74.0" prefHeight="25.0" prefWidth="200.0" promptText="Description" />
+                                          <JFXTextField id="input" fx:id="addStayAm" labelFloat="true" layoutX="534.0" layoutY="285.0" prefWidth="200.0" promptText="Stay Amount" />
+                                          <JFXTextField id="input" fx:id="addFoodAm" labelFloat="true" layoutX="534.0" layoutY="354.0" prefWidth="200.0" promptText="Food Amount" />
+                                          <JFXTextField id="input" fx:id="addBusAm" labelFloat="true" layoutX="784.0" layoutY="89.0" prefWidth="200.0" promptText="Bus Amount" />
+                                          <JFXTextField id="input" fx:id="addTrainAm" labelFloat="true" layoutX="784.0" layoutY="157.0" prefWidth="200.0" promptText="Train Amount" />
+                                          <JFXTextField id="input" fx:id="addAirAm" labelFloat="true" layoutX="784.0" layoutY="224.0" prefWidth="200.0" promptText="Airlines Amount" />
+                                          <JFXComboBox id="input" fx:id="addNoDay" labelFloat="true" layoutX="784.0" layoutY="290.0" prefWidth="200.0" promptText="Number of Days" />
+                                          <JFXComboBox id="input" fx:id="addNoNight" labelFloat="true" layoutX="784.0" layoutY="359.0" prefWidth="200.0" promptText="Number of Nights" />
+                                          <BorderPane id="image" layoutX="94.0" layoutY="28.0" prefHeight="300.0" prefWidth="365.0" style="-fx-background-color: grey;">
+                                             <center>
+                                                <ImageView fx:id="addImage" fitHeight="300.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                                             </center>
+                                             <effect>
+                                                <DropShadow />
+                                             </effect>
+                                          </BorderPane>
+                                          <JFXButton id="buttons" fx:id="addBrowse" buttonType="RAISED" layoutX="94.0" layoutY="359.0" onAction="#browseImage" prefHeight="39.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Browse" textFill="WHITE" />
+                                          <JFXButton id="buttons" fx:id="addPackageBtn" buttonType="RAISED" layoutX="472.0" layoutY="437.0" onAction="#addPackageDB" prefHeight="39.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Add Package" textFill="WHITE" />
+                                          <Label id="warning" fx:id="isaddPlace" layoutX="258.0" layoutY="392.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddNoChild" layoutX="534.0" layoutY="244.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddNoAdult" layoutX="534.0" layoutY="178.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddDetails" layoutX="534.0" layoutY="109.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddFoodAm" layoutX="534.0" layoutY="378.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddStayAm" layoutX="534.0" layoutY="309.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddBusAm" layoutX="784.0" layoutY="114.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddTrainAm" layoutX="784.0" layoutY="183.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddAirAm" layoutX="784.0" layoutY="249.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddNoDay" layoutX="784.0" layoutY="314.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddNoNight" layoutX="784.0" layoutY="383.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <Label id="warning" fx:id="isaddImage" layoutX="94.0" layoutY="328.0" prefHeight="17.0" prefWidth="200.0" textFill="RED" />
+                                          <JFXButton id="buttons" fx:id="upPackageBtn" buttonType="RAISED" layoutX="472.0" layoutY="437.0" onAction="#upPackageDB" prefHeight="39.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Update Package" textFill="WHITE" />
+                                       </children>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="ViewPackageTab" style="-fx-background-color: red;" text="View Package Details">
+                           <content>
+                              <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <BorderPane id="image" layoutX="770.0" layoutY="10.0" prefHeight="260.0" prefWidth="370.0" style="-fx-background-color: grey;">
+                                       <center>
+                                          <ImageView fx:id="dImage" fitHeight="260.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <AnchorPane layoutX="770.0" layoutY="280.0" prefHeight="310.0" prefWidth="370.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.26), 10, 0.12, -1, 2); -fx-background-color: white;">
+                                       <children>
+                                          <Label id="bodyTitle" layoutX="14.0" layoutY="13.0" text="Place:">
+                                             <font>
+                                                <Font name="Roboto Black" size="13.0" />
+                                             </font></Label>
+                                          <Label id="bodyBody" fx:id="dPlace" layoutX="92.0" layoutY="13.0" prefHeight="17.0" prefWidth="256.0">
+                                             <font>
+                                                <Font name="Roboto Light" size="12.0" />
+                                             </font></Label>
+                                          <Label id="bodyTitle" layoutX="14.0" layoutY="43.0" text="Description:" />
+                                          <Label id="bodyBody" fx:id="dDetails" alignment="TOP_LEFT" layoutX="92.0" layoutY="43.0" prefHeight="57.0" prefWidth="259.0" textAlignment="JUSTIFY" wrapText="true" />
+                                          <Label id="bodyTitle" layoutX="216.0" layoutY="111.0" text="No. of Kids:" />
+                                          <Label id="bodyTitle" layoutX="14.0" layoutY="111.0" text="No. of Adults:" />
+                                          <Label id="bodyBody" fx:id="dAdults" layoutX="98.0" layoutY="110.0" prefHeight="17.0" prefWidth="50.0" />
+                                          <Label id="bodyBody" fx:id="dKids" layoutX="288.0" layoutY="110.0" prefHeight="17.0" prefWidth="51.0" />
+                                          <Label id="bodyBody" fx:id="dFood" layoutX="285.0" layoutY="140.0" prefHeight="17.0" prefWidth="47.0" />
+                                          <Label id="bodyBody" fx:id="dStay" layoutX="77.0" layoutY="140.0" prefHeight="17.0" prefWidth="43.0" />
+                                          <Label id="bodyTitle" layoutX="14.0" layoutY="141.0" text="Stay Cost:" />
+                                          <Label id="bodyTitle" layoutX="218.0" layoutY="141.0" text="Food Cost:" />
+                                          <Label id="bodyBody" fx:id="dBus" layoutX="75.0" layoutY="171.0" prefHeight="17.0" prefWidth="49.0" />
+                                          <Label id="bodyTitle" layoutX="14.0" layoutY="172.0" text="Bus Cost:" />
+                                          <Label id="bodyTitle" layoutX="129.0" layoutY="172.0" text="Train Cost:" />
+                                          <Label id="bodyBody" fx:id="dTrain" layoutX="197.0" layoutY="171.0" prefHeight="17.0" prefWidth="45.0" />
+                                          <Label id="bodyTitle" layoutX="247.0" layoutY="172.0" text="Flight Cost:" />
+                                          <Label id="bodyBody" fx:id="dAir" layoutX="318.0" layoutY="171.0" prefHeight="17.0" prefWidth="47.0" />
+                                          <Label id="bodyTitle" layoutX="14.0" layoutY="204.0" text="No. of Days:" />
+                                          <Label id="bodyBody" fx:id="dDays" layoutX="92.0" layoutY="203.0" prefHeight="17.0" prefWidth="235.0" />
+                                          <JFXButton id="buttons" fx:id="deletePackage" buttonType="RAISED" layoutX="30.0" layoutY="241.0" onAction="#DeletePackage" prefHeight="39.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Delete" textFill="WHITE" />
+                                          <JFXButton id="buttons" fx:id="updatePackage" buttonType="RAISED" layoutX="184.0" layoutY="241.0" onAction="#UpdatePackage" prefHeight="39.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Update" textFill="WHITE" />
+                                       </children>
+                                    </AnchorPane>
+                                    <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="750.0">
+                                       <children>
+                                          <JFXTreeTableView fx:id="PackageInfoTable" prefHeight="580.0" prefWidth="750.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect>
+                                          </JFXTreeTableView>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="ViewBookingTab" style="-fx-background-color: red;" text="View Booking Details">
+                           <content>
+                              <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="1130.0">
+                                       <children>
+                                          <JFXTreeTableView fx:id="BookingInfoTable" prefHeight="580.0" prefWidth="1130.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect>
+                                          </JFXTreeTableView>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="ViewUserTab" style="-fx-background-color: red;" text="View User Details">
+                          <content>
+                            <AnchorPane id="LrootPane_css" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="1130.0">
+                                       <children>
+                                          <JFXTreeTableView fx:id="UserInfoTable" prefHeight="580.0" prefWidth="1130.0">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect>
+                                          </JFXTreeTableView>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+                </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

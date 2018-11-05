@@ -83,3 +83,13 @@
     -fx-background-color: rgba(255,255,255, 0.7);
     -fx-background-radius: 20px;
 }
+#bodyTitle{
+    -fx-font-weight: regular;
+    -fx-font-family: 'Roboto Black';
+    -fx-font-size: 13px;
+}
+#bodyBody{
+    -fx-font-weight: regular;
+    -fx-font-family: 'Roboto Light';
+    -fx-font-size: 12px;
+}

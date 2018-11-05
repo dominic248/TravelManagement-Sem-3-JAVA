@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane fx:id="ViewPlaces" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="travelmanagement.display.userpage.ViewPlacesContentController">
+   <children>
+      <BorderPane layoutX="770.0" layoutY="10.0" prefHeight="270.0" prefWidth="370.0" style="-fx-background-color: grey;">
+         <center>
+            <ImageView fx:id="dImage" fitHeight="270.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+         </center>
+      </BorderPane>
+      <AnchorPane layoutX="770.0" layoutY="290.0" prefHeight="295.0" prefWidth="370.0" style="-fx-background-color: white;">
+         <children>
+            <Label id="bodyTitle" layoutX="14.0" layoutY="13.0" text="Place:" />
+            <Label id="bodyBody" fx:id="dPlace" layoutX="90.0" layoutY="12.0" prefHeight="17.0" prefWidth="256.0" />
+            <Label id="bodyTitle" layoutX="14.0" layoutY="43.0" text="Description:" />
+            <Label id="bodyTitle" layoutX="216.0" layoutY="111.0" text="No. of Kids:" />
+            <Label id="bodyTitle" layoutX="14.0" layoutY="111.0" text="No. of Adults:" />
+            <Label id="bodyBody" fx:id="dAdults" layoutX="98.0" layoutY="110.0" prefHeight="17.0" prefWidth="61.0" />
+            <Label id="bodyBody" fx:id="dKids" layoutX="288.0" layoutY="110.0" prefHeight="17.0" prefWidth="56.0" />
+            <Label id="bodyBody" fx:id="dFood" layoutX="285.0" layoutY="140.0" prefHeight="17.0" prefWidth="56.0" />
+            <Label id="bodyBody" fx:id="dStay" layoutX="78.0" layoutY="140.0" prefHeight="17.0" prefWidth="49.0" />
+            <Label id="bodyTitle" layoutX="14.0" layoutY="141.0" text="Stay Cost:" />
+            <Label id="bodyTitle" layoutX="218.0" layoutY="141.0" text="Food Cost:" />
+            <Label id="bodyBody" fx:id="dBus" layoutX="74.0" layoutY="171.0" prefHeight="17.0" prefWidth="49.0" />
+            <Label id="bodyTitle" layoutX="14.0" layoutY="172.0" text="Bus Cost:" />
+            <Label id="bodyTitle" layoutX="129.0" layoutY="172.0" text="Train Cost:" />
+            <Label id="bodyBody" fx:id="dTrain" layoutX="196.0" layoutY="171.0" prefHeight="17.0" prefWidth="49.0" />
+            <Label id="bodyTitle" layoutX="247.0" layoutY="172.0" text="Flight Cost:" />
+            <Label id="bodyBody" fx:id="dAir" layoutX="318.0" layoutY="171.0" prefHeight="17.0" prefWidth="49.0" />
+            <Label id="bodyTitle" layoutX="14.0" layoutY="204.0" text="No. of Days:" />
+            <Label id="bodyBody" fx:id="dDays" layoutX="90.0" layoutY="203.0" prefHeight="17.0" prefWidth="235.0" />
+            <JFXButton id="buttons" fx:id="dBook" buttonType="RAISED" layoutX="26.0" layoutY="238.0" onAction="#Book" prefHeight="35.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="Book" textFill="WHITE" />
+            <JFXTextArea id="bodyBody" fx:id="dDetails" editable="false" layoutX="90.0" layoutY="41.0" prefHeight="54.0" prefWidth="256.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="575.0" prefWidth="750.0">
+         <children>
+            <JFXTreeTableView fx:id="PackageInfoTable" prefHeight="575.0" prefWidth="750.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXTreeTableView>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>
